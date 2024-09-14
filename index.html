@@ -92,13 +92,10 @@
         .donate-button {
             position: fixed; /* Fixed position relative to the viewport */
             left: 50%; /* Position the left edge at 50% of the viewport width */
-            bottom: 80px; /* Position the button 200px from the bottom */
+            bottom: 80px; /* Position the button 80px from the bottom */
             transform: translateX(-50%); /* Center the button by shifting it left by 50% of its own width */
 
-            display: inline-flex; /* Flex for aligning icon and text */
-            align-items: center;
-            justify-content: center;
-
+            display: inline-block; /* Changed from inline-flex to inline-block since there's no icon */
             padding: 10px 20px; /* Adjusted padding for a moderately sized button */
             background-color: #28a745; /* Green background */
             color: #ffffff; /* White text */
@@ -112,6 +109,10 @@
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000; /* Ensures the button stays above other elements */
+
+            opacity: 0; /* Initially hidden for fade-in effect */
+            animation: fadeIn 1.5s ease-in-out forwards; /* Apply fade-in animation */
+            animation-delay: 1.5s; /* Delay to synchronize with other elements */
         }
 
         .donate-button:hover {
@@ -135,10 +136,12 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateX(-50%) translateY(20px);
             }
 
             to {
                 opacity: 1;
+                transform: translateX(-50%) translateY(0);
             }
         }
 
@@ -158,15 +161,8 @@
             .donate-button {
                 padding: 8px 16px;
                 font-size: 14px;
-                bottom: 150px; /* Slightly closer on smaller screens */
+                bottom: 80px; /* Maintain 80px from bottom */
             }
-        }
-
-        /* Optional: Icon within Donate Button */
-        .donate-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
         }
     </style>
 </head>
@@ -191,8 +187,6 @@
        rel="noopener noreferrer" 
        class="donate-button" 
        aria-label="Donate to support Omey via PayPal">
-        <!-- Optional: PayPal Icon -->
-        <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="Donate" class="donate-icon">
         Support Me
     </a>
 </body>
