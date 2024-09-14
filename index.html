@@ -20,7 +20,7 @@
         html,
         body {
             height: 100vh;
-            overflow: hidden; /* Consider changing this if you have content that needs scrolling */
+            overflow: auto; /* Changed from hidden to allow scrolling if necessary */
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             background-size: cover;
@@ -111,7 +111,7 @@
             z-index: 1000; /* Ensures the button stays above other elements */
 
             opacity: 0; /* Initially hidden for fade-in effect */
-            animation: fadeIn 1.5s ease-in-out forwards; /* Apply fade-in animation */
+            animation: fadeInButton 1.5s ease-in-out forwards; /* Apply fade-in animation */
             animation-delay: 1.5s; /* Delay to synchronize with other elements */
         }
 
@@ -132,16 +132,28 @@
             box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Focus ring for accessibility */
         }
 
-        /* Keyframes for Fade In Animation */
+        /* Keyframes for Fade In Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateX(-50%) translateY(20px);
+                /* Removed transform to prevent horizontal shifting */
             }
 
             to {
                 opacity: 1;
-                transform: translateX(-50%) translateY(0);
+                /* Removed transform */
+            }
+        }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                /* No transform to keep the button in place */
+            }
+
+            to {
+                opacity: 1;
+                /* No transform */
             }
         }
 
