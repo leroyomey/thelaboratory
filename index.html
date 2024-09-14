@@ -6,26 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 10%, #fad0c4 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
             text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         h1 {
             margin-bottom: 20px;
             font-size: 3em;
-            animation: fadeIn 1.5s ease-in-out;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            animation: textFadeIn 2s ease;
         }
 
         ul {
@@ -40,41 +71,57 @@
         a {
             text-decoration: none;
             font-size: 1.5em;
-            color: #5b92e5;
+            color: #ffffff;
             transition: color 0.3s, transform 0.3s;
         }
 
         a:hover {
-            color: #333;
+            color: #ffd700;
             transform: scale(1.05);
         }
 
         footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
             text-align: center;
-            margin-top: 40px;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         footer p {
             font-size: 0.9em;
-            color: #666;
+            color: #ffffff;
         }
 
         footer a {
-            color: #5b92e5;
+            color: #ffd700;
             text-decoration: none;
         }
 
         footer a:hover {
-            color: #333;
+            color: #ffffff;
         }
 
         @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes textFadeIn {
             0% {
                 opacity: 0;
+                transform: translateY(-20px);
             }
 
             100% {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
