@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omey's Projects</title>
+    <title>The Lab - Omey's Projects</title>
+    <!-- Google Fonts: Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
         /* Reset some default styles */
         * {
@@ -24,6 +26,17 @@
             justify-content: center;
             align-items: center;
             padding: 40px;
+        }
+
+        /* Header styling */
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
+            color: #ffab00; /* Amber Accent */
+            text-decoration: none;
         }
 
         /* Project panel styling */
@@ -103,10 +116,19 @@
             .project {
                 width: 90%;
             }
+
+            .header {
+                font-size: 1.5em;
+                top: 10px;
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <a href="#" class="header" aria-label="The Lab">The Lab</a>
+
     <section class="projects">
         <!-- Project 1: Font Detector Website -->
         <div class="project">
