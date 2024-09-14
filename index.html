@@ -15,8 +15,8 @@
         /* Body styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+            color: #f0f0f0;
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -25,26 +25,29 @@
 
         /* Header styling */
         header {
-            background-color: #ff6600; /* Orange accent */
+            background-color: #0d47a1; /* Dark Blue */
             color: #fff;
-            padding: 40px 20px 20px 20px;
+            padding: 60px 20px 40px 20px;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header SVG Wave */
-        .header-wave {
+        /* Header SVG Decorative Elements */
+        .header-decoration {
             position: absolute;
-            bottom: -1px;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px;
-            fill: #f4f4f4;
+            height: 150px;
+            fill: #1c1c1c;
         }
 
         /* Main content styling */
@@ -63,33 +66,39 @@
         }
 
         .project {
-            background-color: #fff;
-            border: 1px solid #ddd;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
             border-radius: 12px;
             padding: 25px;
             width: 300px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            overflow: hidden;
         }
 
         .project:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.7);
         }
 
         .project-icon {
             width: 50px;
             height: 50px;
             margin-bottom: 15px;
-            fill: #ff6600;
+            fill: #0d47a1;
+            transition: fill 0.3s;
+        }
+
+        .project:hover .project-icon {
+            fill: #1976d2;
         }
 
         .project h2 {
-            color: #ff6600;
+            color: #ffab00; /* Amber Accent */
             margin-bottom: 10px;
             font-size: 1.5em;
         }
@@ -102,32 +111,98 @@
         .project a {
             text-decoration: none;
             color: #fff;
-            background-color: #ff6600;
+            background-color: #ffab00; /* Amber Accent */
             padding: 12px 20px;
             border-radius: 6px;
             text-align: center;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
             display: inline-block;
         }
 
         .project a:hover {
-            background-color: #e65c00;
+            background-color: #ffa000;
+            transform: scale(1.05);
+        }
+
+        /* "Support My Work" Button */
+        .support-button {
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            background-color: #ff5722; /* Deep Orange */
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .support-button svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: #fff;
+            transition: fill 0.3s;
+        }
+
+        .support-button:hover {
+            background-color: #e64a19;
+            transform: translateY(-5px);
+        }
+
+        .support-button:hover svg {
+            fill: #ffe0b2;
         }
 
         /* Footer styling */
         footer {
-            background-color: #333;
+            background-color: #0d47a1; /* Dark Blue */
             color: #fff;
             text-align: center;
-            padding: 20px 0;
+            padding: 40px 20px 20px 20px;
             position: relative;
+            overflow: hidden;
         }
 
-        /* Footer SVG Separator */
-        .footer-separator {
+        footer p {
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #ffab00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ffa000;
+        }
+
+        /* Footer SVG Decorative Elements */
+        .footer-decoration {
+            position: absolute;
+            top: -1px;
+            left: 0;
             width: 100%;
-            height: 50px;
-            fill: #f4f4f4;
+            height: 100px;
+            fill: #1c1c1c;
+        }
+
+        /* Background SVG Patterns */
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
         }
 
         /* Responsive Design */
@@ -142,17 +217,34 @@
             }
 
             header h1 {
-                font-size: 2em;
+                font-size: 2.5em;
+            }
+
+            .support-button {
+                bottom: 70px;
+                right: 20px;
+                padding: 12px 16px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background SVG Pattern -->
+    <svg class="background-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <defs>
+            <pattern id="pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="20" cy="20" r="2" fill="#ffab00" />
+            </pattern>
+        </defs>
+        <rect width="1440" height="320" fill="url(#pattern)"></rect>
+    </svg>
+
     <header>
         <h1>Omey's Projects</h1>
-        <!-- Header SVG Wave -->
-        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,149.3C672,149,768,171,864,176C960,181,1056,171,1152,176C1248,181,1344,203,1392,213.3L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        <!-- Header Decorative SVG -->
+        <svg class="header-decoration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path d="M0,224L48,218.7C96,213,192,203,288,192C384,181,480,171,576,176C672,181,768,203,864,202.7C960,203,1056,181,1152,176C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
     </header>
 
@@ -189,13 +281,23 @@
         </section>
     </main>
 
-    <!-- Footer SVG Separator -->
-    <svg class="footer-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill-opacity="1" d="M0,224L30,197.3C60,171,120,117,180,112C240,107,300,149,360,154.7C420,160,480,128,540,138.7C600,149,660,203,720,208C780,213,840,171,900,154.7C960,139,1020,149,1080,149.3C1140,149,1200,139,1260,133.3C1320,128,1380,128,1410,128L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
-    </svg>
+    <!-- "Support My Work" Button -->
+    <a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD" target="_blank" class="support-button">
+        <!-- PayPal SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20.4 4.6c-.8-1.4-2.2-2.4-3.8-2.7-1.2-.3-2.4-.2-3.5.3C12.7 2.3 11.3 2 10 2s-2.7.3-3.7.7c-1.1.5-2.3.6-3.5.3-1.6-.3-3-1.3-3.8-2.7-.8-1.4-1.2-3.1-1.2-4.8C1 1.4 2.4 0 4.2 0h15.6c1.8 0 3.2 1.4 3.2 3.2 0 1.7-.4 3.4-1.2 4.8zM6.6 5.3c.4.7.9 1.4 1.5 2.1.6.7 1.3 1.3 2 1.8.7.5 1.4 1 2.2 1.4.8.4 1.7.8 2.5 1.1.8.3 1.6.6 2.4.8V4.8c-.8-.2-1.6-.5-2.4-.8-.8-.3-1.7-.7-2.5-1.1-.8-.4-1.5-.9-2.2-1.4-.7-.5-1.4-1.1-2-1.8-.6-.7-1.1-1.4-1.5-2.1zM19.8 6.8H4.2c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h15.6c.6 0 1-.4 1-1V7.8c0-.6-.4-1-1-1zm-1 12H5.2V8.8h13.4v10z"/>
+        </svg>
+        Support My Work
+    </a>
 
     <footer>
-        <p>Omey &copy; 2024</p>
+        <!-- Footer Decorative SVG -->
+        <svg class="footer-decoration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path d="M0,224L30,197.3C60,171,120,117,180,112C240,107,300,149,360,154.7C420,160,480,128,540,138.7C600,149,660,203,720,208C780,213,840,171,900,154.7C960,139,1020,149,1080,149.3C1140,149,1200,139,1260,133.3C1320,128,1380,128,1410,128L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+        </svg>
+        <p>
+            <a href="https://x.com/randompers91506" target="_blank">Omey</a> &copy; 2024
+        </p>
     </footer>
 </body>
 </html>
