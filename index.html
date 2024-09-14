@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
-    <!-- Updated fonts with more elegant and distinct choices -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Elegant fonts and ghost effect -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,82 +24,29 @@
             color: #333;
             display: flex;
             flex-direction: column;
-            scroll-behavior: smooth;
         }
 
-        /* Header styling */
+        /* Ghost Lettering for the Header */
         h1 {
             position: absolute;
-            top: 20px;
+            top: 0;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3.5em;
+            font-size: 15vw; /* Make it huge to span the page */
             font-family: 'Playfair Display', serif;
-            color: #ffd700;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            color: transparent; /* Ghost lettering with transparent color */
+            -webkit-text-stroke: 2px #ffd700; /* Create the outline effect */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
+            width: 100%;
+            height: 100vh; /* Full height to span the page */
             z-index: 10;
+            text-align: center;
         }
 
-        h1 span {
-            display: inline-block;
-            white-space: nowrap; /* Ensures the words don't wrap */
-            opacity: 0; /* Initially hidden */
-        }
-
-        /* Slide in "The" from the left */
-        .word-the {
-            animation: slideInLeft 1s cubic-bezier(.25,.8,.25,1) forwards 0.5s;
-        }
-
-        /* Slide in "Laboratory" from the right */
-        .word-laboratory {
-            animation: slideInRight 1s cubic-bezier(.25,.8,.25,1) forwards 0.5s;
-        }
-
-        /* Improved sliding effect */
-        @keyframes slideInLeft {
-            0% {
-                transform: translateX(-150%) scale(0.8) rotateY(90deg);
-                opacity: 0;
-            }
-            70% {
-                transform: translateX(0%) scale(1.1) rotateY(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(10px) scale(1); /* Slight bounce */
-            }
-        }
-
-        @keyframes slideInRight {
-            0% {
-                transform: translateX(150%) scale(0.8) rotateY(-90deg);
-                opacity: 0;
-            }
-            70% {
-                transform: translateX(0%) scale(1.1) rotateY(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(-10px) scale(1); /* Slight bounce */
-            }
-        }
-
-        /* Bounce effect when the words meet */
-        h1 span.word-the, h1 span.word-laboratory {
-            animation-timing-function: cubic-bezier(.68,-0.55,.27,1.55);
-        }
-
-        /* Hover effect for the header */
-        h1:hover span {
-            transform: scale(1.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        /* Project container */
+        /* Center the content container */
         .container {
             flex: 1;
             display: flex;
@@ -130,7 +77,7 @@
             transform: scale(1.05);
         }
 
-        /* Footer */
+        /* Footer styling */
         footer {
             position: absolute;
             bottom: 0;
@@ -165,10 +112,9 @@
             }
         }
 
-        /* Responsive adjustments */
         @media (max-width: 900px) {
             h1 {
-                font-size: 3em;
+                font-size: 12vw; /* Adjust size for smaller screens */
             }
 
             .projects a {
@@ -178,7 +124,7 @@
 
         @media (max-width: 600px) {
             h1 {
-                font-size: 2.5em;
+                font-size: 10vw; /* Adjust size for mobile */
             }
 
             .projects a {
@@ -190,10 +136,8 @@
 
 <body>
 
-    <h1>
-        <span class="word-the">The</span>
-        <span class="word-laboratory">Laboratory</span>
-    </h1>
+    <!-- Ghost Lettering Header -->
+    <h1>The Laboratory</h1>
 
     <div class="container">
         <div class="projects">
