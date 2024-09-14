@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -50,34 +49,44 @@
         }
 
         h1 {
-            margin-bottom: 20px;
-            font-size: 3em;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
+            margin-bottom: 40px;
+            font-size: 3.5em;
+            font-family: 'Lobster', cursive;
             color: #ffffff;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             animation: textFadeIn 2s ease;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        li {
-            margin: 10px 0;
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        a {
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card a {
             text-decoration: none;
             font-size: 1.5em;
-            color: #ffffff;
-            transition: color 0.3s, transform 0.3s;
+            color: #5b92e5;
+            transition: color 0.3s;
         }
 
-        a:hover {
-            color: #ffd700;
-            transform: scale(1.05);
+        .card a:hover {
+            color: #ff6f61;
         }
 
         footer {
@@ -130,7 +139,11 @@
                 font-size: 2.5em;
             }
 
-            a {
+            .card {
+                max-width: 300px;
+            }
+
+            .card a {
                 font-size: 1.2em;
             }
         }
@@ -141,10 +154,14 @@
 
     <div class="container">
         <h1>The Laboratory</h1>
-        <ul>
-            <li><a href="https://fontdetector.xyz/index.html" aria-label="Font Detector Tool">Font Detector - Detects fonts used on webpages</a></li>
-            <li aria-label="ReadEasy - Enable Dyslexia-Friendly Fonts">ReadEasy - Enable Dyslexia-Friendly Fonts</li>
-        </ul>
+        <div class="projects">
+            <div class="card">
+                <a href="https://fontdetector.xyz/index.html" aria-label="Font Detector Tool">Font Detector - Detects fonts used on webpages</a>
+            </div>
+            <div class="card">
+                <p aria-label="ReadEasy - Enable Dyslexia-Friendly Fonts">ReadEasy - Enable Dyslexia-Friendly Fonts (Coming Soon)</p>
+            </div>
+        </div>
     </div>
 
     <footer>
