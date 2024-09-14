@@ -10,7 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papLe3hFjnSWAbjuTgYfYcB7xOeH7g5UYZJJYwvZ1n4m6hKMHwgF58R4mwDQaGZ+u6y/9i3qHXtZ9sv9B3i3Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-papLe3hFjnSWAbjuTgYfYcB7xOeH7g5UYZJJYwvZ1n4m6hKMHwgF58R4mwDQaGZ+u6y/9i3qHXtZ9sv9B3i3Vw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        integrity="sha512-2uF5tN8Z4MqMK70cVyd4bppGk/dXLOpcMwXsklS3P4eF6eLL/6HzbAfLax0LSFujP6LDyyDddI6hu7GPvhbUPg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Stylesheet -->
     <style>
@@ -22,11 +29,13 @@
             --card-background: rgba(255, 255, 255, 0.1);
             --card-hover-background: rgba(255, 111, 97, 0.1);
             --text-color: #ffffff;
-            --header-bg: rgba(15, 32, 39, 0.8);
-            --footer-bg: rgba(15, 32, 39, 0.9);
+            --header-bg: rgba(15, 32, 39, 0.9);
+            --footer-bg: rgba(15, 32, 39, 0.95);
             --link-color: #ffd700;
             --link-hover-color: #ff6f61;
             --border-color: #ffd700;
+            --modal-bg: rgba(0, 0, 0, 0.8);
+            --transition-speed: 0.3s;
         }
 
         /* Reset */
@@ -54,22 +63,54 @@
             z-index: -1;
         }
 
-        /* Header */
-        header {
+        /* Navigation Bar */
+        nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px;
-            text-align: center;
             background: var(--header-bg);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 200;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        header h1 {
+        nav .logo {
             color: var(--primary-color);
-            font-size: 2.25rem;
-            text-transform: uppercase;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color var(--transition-speed);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            transition: color var(--transition-speed);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
         }
 
         /* Main Content */
@@ -77,12 +118,39 @@
             padding: 100px 20px 60px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+        }
+
+        /* About Section */
+        #about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #about h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        #about p {
+            max-width: 800px;
+            font-size: 1.1rem;
+            color: var(--text-color);
         }
 
         /* Project Listing */
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             padding: 20px;
             position: relative;
@@ -97,8 +165,10 @@
             text-align: center;
             color: var(--primary-color);
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
+            transition: all var(--transition-speed) ease-in-out;
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
         .project-card:hover {
@@ -126,12 +196,51 @@
             color: #ffffff;
             border-radius: 25px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: background-color var(--transition-speed);
             font-weight: bold;
         }
 
         .project-card a:hover {
             background-color: #e65c54; /* Darkened secondary color */
+        }
+
+        /* Contact Form */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact form input,
+        #contact form textarea {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        #contact form input:focus,
+        #contact form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        #contact form button {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        #contact form button:hover {
+            background-color: #e6c200; /* Darkened primary color */
         }
 
         /* Footer */
@@ -152,43 +261,104 @@
             color: var(--link-color);
             text-decoration: none;
             margin: 0 10px;
-            font-size: 1.25rem;
-            transition: color 0.3s;
+            font-size: 1.5rem;
+            transition: color var(--transition-speed), transform var(--transition-speed);
         }
 
         footer a:hover {
             color: var(--link-hover-color);
+            transform: scale(1.2);
         }
 
-        /* FPS Monitor */
-        #fps {
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
             position: fixed;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: #00ff00;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            z-index: 200;
+            z-index: 300;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: var(--modal-bg);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--card-background);
+            margin: auto;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .close {
+            color: var(--text-color);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color var(--transition-speed);
+        }
+
+        .close:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Theme Styles */
+        body.light-mode {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --footer-bg: rgba(255, 255, 255, 0.95);
+            --card-background: rgba(0, 0, 0, 0.05);
+            --card-hover-background: rgba(255, 111, 97, 0.1);
+            --link-color: #ffd700;
+            --link-hover-color: #ff6f61;
+            --border-color: #ffd700;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 {
+            nav ul {
+                display: none;
+            }
+
+            nav .menu-toggle {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: var(--text-color);
+            }
+
+            nav.active ul {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: var(--header-bg);
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            nav.active ul li {
+                margin: 10px 0;
+            }
+
+            #about h2,
+            #projects h2,
+            #contact h2 {
                 font-size: 1.75rem;
-            }
-
-            .project-card h3 {
-                font-size: 1.125rem;
-            }
-
-            .project-card p {
-                font-size: 0.95rem;
-            }
-
-            footer a {
-                font-size: 1rem;
             }
         }
 
@@ -197,271 +367,295 @@
             scroll-behavior: smooth;
         }
 
-        /* Social Media Icons */
-        .social-icons a {
-            color: var(--link-color);
-            margin: 0 10px;
-            font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: var(--link-hover-color);
-            transform: scale(1.2);
+        /* Accessibility Focus Styles */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px dashed var(--primary-color);
+            outline-offset: 4px;
         }
     </style>
 </head>
 
 <body>
-    <canvas id="gameCanvas" aria-hidden="true"></canvas>
+    <!-- Three.js Canvas -->
+    <canvas id="threeCanvas" aria-hidden="true"></canvas>
 
-    <!-- FPS Monitor -->
-    <div id="fps" aria-label="Frames Per Second">FPS: 0</div>
-
-    <!-- Header Section -->
-    <header>
-        <h1>The Interactive Laboratory</h1>
-    </header>
+    <!-- Navigation Bar -->
+    <nav aria-label="Main Navigation">
+        <a href="#" class="logo">Omey</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><span class="theme-toggle" id="themeToggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></span></li>
+        </ul>
+        <span class="menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></span>
+    </nav>
 
     <!-- Main Content -->
     <main>
-        <!-- Project List -->
-        <section class="projects" aria-label="Project List">
-            <div class="project-card" tabindex="0">
-                <h3>Font Detector</h3>
-                <p>Detect fonts used on any webpage with this simple tool.</p>
-                <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer">Visit</a>
+        <!-- About Section -->
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Me</h2>
+            <p>
+                Welcome to my interactive laboratory! I'm Omey, a passionate developer dedicated to creating engaging and
+                dynamic web experiences. With a keen eye for design and a deep understanding of technology, I strive to
+                build websites that are not only visually appealing but also highly functional and user-friendly.
+            </p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Projects</h2>
+            <div class="projects">
+                <div class="project-card" tabindex="0" data-project="font-detector">
+                    <h3>Font Detector</h3>
+                    <p>Detect fonts used on any webpage with this simple tool.</p>
+                    <a href="#" aria-label="View details of Font Detector">View Details</a>
+                </div>
+                <div class="project-card" tabindex="0" data-project="read-easy">
+                    <h3>ReadEasy</h3>
+                    <p>Enables dyslexia-friendly fonts for better readability.</p>
+                    <a href="#" aria-label="View details of ReadEasy">View Details</a>
+                </div>
+                <div class="project-card" tabindex="0" data-project="read-later">
+                    <h3>ReadLater</h3>
+                    <p>Save webpages for later reading and never miss important content.</p>
+                    <a href="#" aria-label="View details of ReadLater">View Details</a>
+                </div>
+                <!-- Add more projects as needed -->
             </div>
-            <div class="project-card" tabindex="0">
-                <h3>ReadEasy</h3>
-                <p>Enables dyslexia-friendly fonts for better readability.</p>
-                <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer">Visit</a>
-            </div>
-            <div class="project-card" tabindex="0">
-                <h3>ReadLater</h3>
-                <p>Save webpages for later reading and never miss important content.</p>
-                <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer">Visit</a>
-            </div>
-            <!-- Add more projects as needed -->
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Me</h2>
+            <form action="#" method="POST" aria-label="Contact Form">
+                <input type="text" name="name" placeholder="Your Name" required aria-required="true">
+                <input type="email" name="email" placeholder="Your Email" required aria-required="true">
+                <textarea name="message" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 <a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer">Omey</a>. All Rights Reserved.</p>
+        <p>&copy; <span id="currentYear"></span> <a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer">Omey</a>. All Rights Reserved.</p>
         <div class="social-icons" aria-label="Social Media Links">
-            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                    class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
+                    class="fab fa-twitter"></i></a>
             <!-- Add more social icons as needed -->
         </div>
     </footer>
 
-    <!-- JavaScript for Interactive Game Background -->
+    <!-- Modal for Project Details -->
+    <div id="projectModal" class="modal" aria-hidden="true" aria-labelledby="modal-title" role="dialog">
+        <div class="modal-content">
+            <span class="close" id="modalClose" aria-label="Close Modal">&times;</span>
+            <h2 id="modal-title">Project Title</h2>
+            <p id="modal-description">Project description goes here.</p>
+            <a href="#" id="modal-link" target="_blank" rel="noopener noreferrer">Visit Project</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactive Features -->
     <script>
-        // Get canvas and context
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+        // Current Year in Footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // FPS Monitor
-        const fpsCounter = document.getElementById('fps');
-        let lastFrameTime = performance.now();
-        let fps = 0;
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
 
-        // Set canvas to full screen
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            mouse.radius = (canvas.height / 100) * (canvas.width / 100);
-            initParticles();
+        // Load theme from localStorage
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
 
-        // Debounce function to limit how often a function can run
-        function debounce(func, wait = 20, immediate = true) {
-            let timeout;
-            return function () {
-                const context = this, args = arguments;
-                const later = function () {
-                    timeout = null;
-                    if (!immediate) func.apply(context, args);
-                };
-                const callNow = immediate && !timeout;
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-                if (callNow) func.apply(context, args);
-            };
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const nav = document.querySelector('nav');
+        mobileMenuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Three.js Particle System
+        let scene, camera, renderer, particles, particleCount = 5000;
+
+        function initThreeJS() {
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+            camera.position.z = 1000;
+
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('threeCanvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Create particles
+            const geometry = new THREE.BufferGeometry();
+            const positions = [];
+            const colors = [];
+            const color = new THREE.Color();
+
+            for (let i = 0; i < particleCount; i++) {
+                const x = THREE.MathUtils.randFloatSpread(2000);
+                const y = THREE.MathUtils.randFloatSpread(2000);
+                const z = THREE.MathUtils.randFloatSpread(2000);
+
+                positions.push(x, y, z);
+
+                color.setHSL(Math.random(), 1.0, 0.5);
+                colors.push(color.r, color.g, color.b);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 2,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending,
+                transparent: true
+            });
+
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
         }
 
-        window.addEventListener('resize', debounce(resizeCanvas));
+        function animateThreeJS() {
+            requestAnimationFrame(animateThreeJS);
 
-        // Initialize canvas size
-        resizeCanvas();
+            particles.rotation.y += 0.0005;
+            particles.rotation.x += 0.0002;
 
-        // Mouse object
-        const mouse = {
-            x: undefined,
-            y: undefined,
-            radius: (canvas.height / 100) * (canvas.width / 100),
+            renderer.render(scene, camera);
+        }
+
+        initThreeJS();
+        animateThreeJS();
+
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Modal Functionality
+        const projectCards = document.querySelectorAll('.project-card');
+        const modal = document.getElementById('projectModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalLink = document.getElementById('modal-link');
+
+        const projectDetails = {
+            'font-detector': {
+                title: 'Font Detector',
+                description: 'Detect fonts used on any webpage with this simple tool. Easily identify and analyze font styles to enhance your web design process.',
+                link: 'https://fontdetector.xyz/index.html'
+            },
+            'read-easy': {
+                title: 'ReadEasy',
+                description: 'Enables dyslexia-friendly fonts for better readability. Improve the reading experience for users with dyslexia by offering customizable font options.',
+                link: 'https://leroyomey.github.io/readeasy/'
+            },
+            'read-later': {
+                title: 'ReadLater',
+                description: 'Save webpages for later reading and never miss important content. Organize your reading list efficiently and access saved pages anytime.',
+                link: 'https://leroyomey.github.io/readlater/'
+            }
+            // Add more project details as needed
         };
 
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        });
-
-        // Particle class
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color, isFriendly) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-                this.isFriendly = isFriendly;
-            }
-
-            // Draw particle
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-
-            // Update particle movement
-            update() {
-                // Reverse direction if hitting canvas boundaries
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-
-                // Collision detection with mouse
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < mouse.radius + this.size) {
-                    if (this.isFriendly) {
-                        // Friendly particles are attracted to the mouse
-                        this.x -= dx / distance * 3;
-                        this.y -= dy / distance * 3;
-                    } else {
-                        // Enemy particles repel from the mouse
-                        this.x += dx / distance * 3;
-                        this.y += dy / distance * 3;
-                    }
-                }
-
-                // Move particles
-                this.x += this.directionX;
-                this.y += this.directionY;
-
-                // Draw particle
-                this.draw();
-            }
-        }
-
-        // Initialize particle array
-        let particlesArray = [];
-        const MAX_PARTICLES = 1000;
-
-        function initParticles() {
-            particlesArray = [];
-            const numberOfParticles = Math.min((canvas.width * canvas.height) / 8000, MAX_PARTICLES);
-            for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 3 + 1;
-                const x = Math.random() * (innerWidth - size * 2) + size * 2;
-                const y = Math.random() * (innerHeight - size * 2) + size * 2;
-                const directionX = (Math.random() * 0.5) - 0.25;
-                const directionY = (Math.random() * 0.5) - 0.25;
-                const color = Math.random() < 0.5 ? 'var(--primary-color)' : 'var(--secondary-color)';
-                const isFriendly = color === 'var(--primary-color)';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color, isFriendly));
-            }
-        }
-
-        // Animate particles
-        function animateParticles() {
-            requestAnimationFrame(animateParticles);
-
-            // FPS Calculation
-            const now = performance.now();
-            const delta = now - lastFrameTime;
-            fps = Math.round(1000 / delta);
-            fpsCounter.textContent = `FPS: ${fps}`;
-            lastFrameTime = now;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connectParticles();
-        }
-
-        // Particle Linking
-        function connectParticles() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    const dx = particlesArray[a].x - particlesArray[b].x;
-                    const dy = particlesArray[a].y - particlesArray[b].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 150) { // Adjust this value for different linking distances
-                        opacityValue = 1 - distance / 150;
-                        ctx.strokeStyle = `rgba(255, 215, 0, ${opacityValue})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        // Initialize and animate particles
-        initParticles();
-        animateParticles();
-
-        // Handle mouse click: Add new particles
-        window.addEventListener('click', (event) => {
-            const size = Math.random() * 5 + 1;
-            const x = event.clientX;
-            const y = event.clientY;
-            const directionX = (Math.random() * 0.5) - 0.25;
-            const directionY = (Math.random() * 0.5) - 0.25;
-            const color = '#00ff00'; // Green for user-added particles
-            const isFriendly = true;
-            if (particlesArray.length < MAX_PARTICLES) {
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color, isFriendly));
-            }
-        });
-
-        // Handle right-click to remove particles
-        window.addEventListener('contextmenu', (event) => {
-            event.preventDefault(); // Prevent context menu
-            const removeRadius = 50;
-            particlesArray = particlesArray.filter(particle => {
-                const distance = Math.hypot(particle.x - event.clientX, particle.y - event.clientY);
-                return distance > removeRadius;
-            });
-        });
-
-        // Accessibility: Allow project cards to be focused and activated via keyboard
-        const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectKey = card.getAttribute('data-project');
+                const project = projectDetails[projectKey];
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalDescription.textContent = project.description;
+                    modalLink.href = project.link;
+                    modalLink.textContent = 'Visit Project';
+                    openModal();
+                }
+            });
+
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                    const link = card.querySelector('a');
-                    if (link) {
-                        link.click();
-                    }
+                    e.preventDefault();
+                    card.click();
                 }
             });
+        });
+
+        function openModal() {
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        // Accessibility: Trap focus within modal when open
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                const focusableElements = modal.querySelectorAll('a, button');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement) {
+                        e.preventDefault();
+                        lastElement.focus();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        e.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
         });
     </script>
 </body>
