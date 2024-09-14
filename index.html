@@ -84,6 +84,40 @@
             color: #ff6f61;
         }
 
+/* Donate Button CSS */
+.donate-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #28a745; /* Green color */
+    color: #ffffff; /* White text */
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.donate-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.donate-button:active {
+    background-color: #1e7e34; /* Even darker green on click */
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.donate-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+}
+        
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -120,7 +154,12 @@
     <footer>
         <p><a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer" aria-label="Omey's Profile">Omey</a> © 2024</p>
     </footer>
-
+<a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="donate-button">
+    Donate Now
+</a>
 </body>
 
 </html>
