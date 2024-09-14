@@ -9,15 +9,18 @@
     <!-- Updated fonts for the content -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        /* General Reset and Box-Sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
+        /* Full Height and Background */
+        html,
+        body {
             height: 100vh;
-            overflow: hidden;
+            overflow: hidden; /* Consider changing this if you have content that needs scrolling */
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             background-size: cover;
@@ -38,6 +41,7 @@
             animation: fadeIn 1.5s ease-in-out;
         }
 
+        /* Projects List Styling */
         .projects {
             display: flex;
             flex-direction: column;
@@ -58,7 +62,7 @@
             transform: scale(1.05);
         }
 
-        /* Footer styling */
+        /* Footer Styling */
         footer {
             position: absolute;
             bottom: 0;
@@ -84,55 +88,61 @@
             color: #ff6f61;
         }
 
-/* Centered Donate Button Styling */
-.donate-button {
-    position: fixed; /* Fixed position relative to the viewport */
-    left: 50%;        /* Position the left edge at 50% of the viewport width */
-    bottom: 90px;    /* Position the button 200px from the bottom */
-    transform: translateX(-50%); /* Center the button by shifting it left by 50% of its own width */
-    
-    display: inline-block;
-    padding: 10px 20px; /* Adjusted padding for a moderately sized button */
-    background-color: #28a745; /* Green background */
-    color: #ffffff; /* White text */
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensures the button stays above other elements */
-}
+        /* Centered Donate Button Styling */
+        .donate-button {
+            position: fixed; /* Fixed position relative to the viewport */
+            left: 50%; /* Position the left edge at 50% of the viewport width */
+            bottom: 80px; /* Position the button 200px from the bottom */
+            transform: translateX(-50%); /* Center the button by shifting it left by 50% of its own width */
 
-.donate-button:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: translateX(-50%) translateY(-2px); /* Slight upward movement on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
+            display: inline-flex; /* Flex for aligning icon and text */
+            align-items: center;
+            justify-content: center;
 
-.donate-button:active {
-    background-color: #1e7e34; /* Even darker green on click */
-    transform: translateX(-50%) translateY(0);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+            padding: 10px 20px; /* Adjusted padding for a moderately sized button */
+            background-color: #28a745; /* Green background */
+            color: #ffffff; /* White text */
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensures the button stays above other elements */
+        }
 
-.donate-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Focus ring for accessibility */
-}
-        
+        .donate-button:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateX(-50%) translateY(-2px); /* Slight upward movement on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .donate-button:active {
+            background-color: #1e7e34; /* Even darker green on click */
+            transform: translateX(-50%) translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .donate-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Focus ring for accessibility */
+        }
+
+        /* Keyframes for Fade In Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
 
+        /* Responsive Font Sizes */
         @media (max-width: 900px) {
             .projects a {
                 font-size: 1.5em;
@@ -143,6 +153,20 @@
             .projects a {
                 font-size: 1.2em;
             }
+
+            /* Adjust Donate Button for Smaller Screens */
+            .donate-button {
+                padding: 8px 16px;
+                font-size: 14px;
+                bottom: 150px; /* Slightly closer on smaller screens */
+            }
+        }
+
+        /* Optional: Icon within Donate Button */
+        .donate-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
         }
     </style>
 </head>
@@ -160,13 +184,17 @@
     <footer>
         <p><a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer" aria-label="Omey's Profile">Omey</a> © 2024</p>
     </footer>
-<!-- Updated Donate Button HTML -->
-<a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="donate-button">
-    Support Me
-</a>
+
+    <!-- Updated Donate Button HTML -->
+    <a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="donate-button" 
+       aria-label="Donate to support Omey via PayPal">
+        <!-- Optional: PayPal Icon -->
+        <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="Donate" class="donate-icon">
+        Support Me
+    </a>
 </body>
 
 </html>
