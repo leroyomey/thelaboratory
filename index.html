@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lab - Omey's Projects</title>
-    <!-- Google Fonts: Pacifico -->
+    <!-- Google Fonts: Fallback Font (e.g., 'Pacifico' if 'Sankofa Display' is unavailable) -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
         /* Reset some default styles */
@@ -12,6 +12,15 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Import "Sankofa Display" Font */
+        @font-face {
+            font-family: 'Sankofa Display';
+            src: url('fonts/SankofaDisplay-Regular.woff2') format('woff2'),
+                 url('fonts/SankofaDisplay-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
         }
 
         /* Body styling */
@@ -23,9 +32,9 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            justify-content: center;
             align-items: center;
             padding: 40px;
+            position: relative;
         }
 
         /* Header styling */
@@ -33,8 +42,8 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            font-family: 'Pacifico', cursive;
-            font-size: 2em;
+            font-family: 'Sankofa Display', 'Pacifico', cursive;
+            font-size: 2.5em;
             color: #ffab00; /* Amber Accent */
             text-decoration: none;
         }
@@ -45,6 +54,8 @@
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
+            width: 100%;
+            max-width: 1200px;
         }
 
         .project {
@@ -106,6 +117,27 @@
             transform: scale(1.05);
         }
 
+        /* Footer styling */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1em;
+            color: #ffab00; /* Amber Accent */
+        }
+
+        footer a {
+            color: #ffab00;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #ffa000;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .projects {
@@ -118,9 +150,14 @@
             }
 
             .header {
-                font-size: 1.5em;
+                font-size: 2em;
                 top: 10px;
                 left: 10px;
+            }
+
+            footer {
+                font-size: 0.9em;
+                bottom: 10px;
             }
         }
     </style>
@@ -129,6 +166,7 @@
     <!-- Header -->
     <a href="#" class="header" aria-label="The Lab">The Lab</a>
 
+    <!-- Project Panels -->
     <section class="projects">
         <!-- Project 1: Font Detector Website -->
         <div class="project">
@@ -170,5 +208,12 @@
             <a href="https://leroyomey.github.io/readlater/" target="_blank" aria-label="View Read Later Website">View Project</a>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="https://x.com/randompers91506" target="_blank" aria-label="Visit Omey's X Profile">Omey</a> &copy; 2024
+        </p>
+    </footer>
 </body>
 </html>
