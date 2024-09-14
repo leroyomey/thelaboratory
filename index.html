@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Improved font loading for performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -23,8 +24,10 @@
             color: #333;
             display: flex;
             flex-direction: column;
+            scroll-behavior: smooth;
         }
 
+        /* Header - Improved animation and layout */
         h1 {
             position: absolute;
             top: 20px;
@@ -36,6 +39,7 @@
             font-family: 'Playfair Display', serif;
             letter-spacing: 3px;
             color: #ffd700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         h1 span {
@@ -50,7 +54,6 @@
             animation: slideInRight 1.5s ease forwards;
         }
 
-        /* Sliding "The" in from the left */
         @keyframes slideInLeft {
             0% {
                 transform: translateX(-150%);
@@ -61,11 +64,10 @@
                 opacity: 1;
             }
             100% {
-                transform: translateX(10px); /* Slight overshoot */
+                transform: translateX(10px);
             }
         }
 
-        /* Sliding "Laboratory" in from the right */
         @keyframes slideInRight {
             0% {
                 transform: translateX(150%);
@@ -76,41 +78,47 @@
                 opacity: 1;
             }
             100% {
-                transform: translateX(-10px); /* Slight overshoot */
+                transform: translateX(-10px);
             }
         }
 
         /* Bounce together */
         h1 span.word-the, h1 span.word-laboratory {
-            animation-timing-function: cubic-bezier(.68,-0.55,.27,1.55); /* Bounce timing */
+            animation-timing-function: cubic-bezier(.68,-0.55,.27,1.55);
         }
 
+        /* Project container improvements */
         .container {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px; /* Added padding for better spacing */
             animation: fadeIn 1.5s ease-in-out;
         }
 
         .projects {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px; /* Improved spacing */
+            max-width: 80%; /* Ensure it's not too wide on large screens */
         }
 
         .projects a {
             text-decoration: none;
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: #ffd700;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
 
         .projects a:hover {
             color: #ff6f61;
+            transform: scale(1.05); /* Subtle scaling effect */
         }
 
+        /* Footer improvement */
         footer {
             position: absolute;
             bottom: 0;
@@ -118,6 +126,7 @@
             text-align: center;
             padding: 20px 0;
             background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
         }
 
         footer p {
@@ -141,6 +150,22 @@
             }
             to {
                 opacity: 1;
+            }
+        }
+
+        /* Accessibility focus improvement */
+        .projects a:focus, footer a:focus {
+            outline: 2px solid #ff6f61;
+        }
+
+        /* Responsiveness improvements */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            .projects a {
+                font-size: 1.5em;
             }
         }
 
