@@ -7,20 +7,8 @@
     <meta description="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
 
-    <!-- Google Fonts: Updated Main Font -->
+    <!-- Google Fonts: Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <!-- Particles.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-    <!-- AOS Library for Scroll Animations -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha512-Fo3rlrQkTyP4A5V1YUcHlxVJaf5tuDN0X1dGiF+VdTEJ1wAeXh6xKjx/BzIGz3I5gNq+8IzHT4+rXfuh9TfzJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* =======================
@@ -35,11 +23,10 @@
         html,
         body {
             height: 100%;
-            font-family: 'Roboto', sans-serif; /* Updated Main Font */
+            font-family: 'Roboto', sans-serif;
             background: #0f2027;
             color: #ffffff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            overflow: hidden; /* Prevent scrollbars caused by canvas */
             position: relative;
         }
 
@@ -56,13 +43,13 @@
         /* =======================
            PARTICLES BACKGROUND
         ======================= */
-        #particles-js {
+        #particle-canvas {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            top: 0;
-            left: 0;
         }
 
         /* =======================
@@ -74,15 +61,14 @@
             text-align: center;
             background: rgba(15, 32, 39, 0.8);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            z-index: 10;
         }
 
         header h1 {
-            font-size: 50px;
+            font-size: 36px;
             color: #ffd700;
-            font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -94,39 +80,60 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 100px 20px;
+            padding: 100px 20px 50px 20px; /* Top padding accounts for fixed header */
             min-height: 100vh;
         }
 
         .projects {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            max-width: 80%;
+            max-width: 1000px;
             width: 100%;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
         }
 
-        .projects a {
-            text-decoration: none;
-            font-size: 1.8em;
-            color: #ffd700;
-            transition: color 0.3s, transform 0.3s;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            border-radius: 8px;
+        .project-card {
             background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .projects a:hover {
-            color: #ff6f61;
-            transform: scale(1.05);
+        .project-card:hover {
+            transform: translateY(-10px);
             background: rgba(255, 111, 97, 0.1);
+            border-color: #ff6f61;
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            color: #ffd700;
+            font-size: 1.5em;
+        }
+
+        .project-card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .project-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: #ffffff;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .project-card a:hover {
+            background-color: #e65c54;
+            transform: scale(1.05);
         }
 
         /* =======================
@@ -138,7 +145,7 @@
             padding: 20px 0;
             background-color: rgba(15, 32, 39, 0.9);
             position: relative;
-            z-index: 100;
+            z-index: 10;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -184,35 +191,15 @@
         }
 
         /* =======================
-           PARALLAX BACKGROUND
-        ======================= */
-        .parallax {
-            /* The image used */
-            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');
-
-            /* Set a specific height */
-            min-height: 400px;
-
-            /* Create the parallax scrolling effect */
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            filter: brightness(0.7);
-            position: relative;
-            z-index: -2;
-        }
-
-        /* =======================
            RESPONSIVE DESIGN
         ======================= */
         @media (max-width: 900px) {
             header h1 {
-                font-size: 40px;
+                font-size: 28px;
             }
 
-            .projects a {
-                font-size: 1.5em;
+            .project-card h3 {
+                font-size: 1.3em;
             }
 
             .donate-button {
@@ -225,10 +212,10 @@
 
         @media (max-width: 600px) {
             header h1 {
-                font-size: 35px;
+                font-size: 24px;
             }
 
-            .projects a {
+            .project-card h3 {
                 font-size: 1.2em;
             }
 
@@ -239,188 +226,245 @@
                 right: 15px;
             }
         }
-
-        /* =======================
-           SCROLLBAR STYLES
-        ======================= */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ffd700;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff6f61;
-        }
     </style>
 </head>
 
 <body>
-    <!-- Parallax Background -->
-    <div class="parallax"></div>
+    <!-- =======================
+           PARTICLE CANVAS
+    ======================= -->
+    <canvas id="particle-canvas"></canvas>
 
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-
-    <!-- Header -->
+    <!-- =======================
+           HEADER
+    ======================= -->
     <header>
         <h1>The Laboratory</h1>
     </header>
 
-    <!-- Main Content Container -->
-    <div class="container" data-aos="fade-up">
+    <!-- =======================
+           MAIN CONTENT
+    ======================= -->
+    <div class="container">
         <div class="projects">
-            <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer"
-                aria-label="Font Detector Tool">Font Detector - Detects Fonts on Webpages</a>
-            <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer"
-                aria-label="ReadEasy Tool">ReadEasy - Enable Dyslexia-Friendly Fonts</a>
-            <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer"
-                aria-label="ReadLater Tool">ReadLater - Save Webpages for Later</a>
+            <div class="project-card">
+                <h3>Font Detector</h3>
+                <p>Detects and identifies fonts used on any webpage with ease.</p>
+                <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer" aria-label="Visit Font Detector">Visit</a>
+            </div>
+            <div class="project-card">
+                <h3>ReadEasy</h3>
+                <p>Enables dyslexia-friendly fonts to enhance readability for everyone.</p>
+                <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer" aria-label="Visit ReadEasy">Visit</a>
+            </div>
+            <div class="project-card">
+                <h3>ReadLater</h3>
+                <p>Save webpages for later reading, ensuring you never miss important content.</p>
+                <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer" aria-label="Visit ReadLater">Visit</a>
+            </div>
+            <!-- Add more project cards as needed -->
         </div>
     </div>
 
-    <!-- Donate Button -->
+    <!-- =======================
+           DONATE BUTTON
+    ======================= -->
     <a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD"
         target="_blank" rel="noopener noreferrer" class="donate-button" aria-label="Donate to support Omey via PayPal">
         <i class="fas fa-donate"></i> Donate
     </a>
 
-    <!-- Footer -->
+    <!-- =======================
+           FOOTER
+    ======================= -->
     <footer>
         <p>&copy; 2024 <a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer">Omey</a>. All Rights Reserved.</p>
     </footer>
 
-    <!-- AOS Initialization -->
+    <!-- =======================
+           JAVASCRIPT FOR PARTICLES
+    ======================= -->
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
-    </script>
+        // Get the canvas element and its context
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
 
-    <!-- Particles.js Configuration -->
-    <script>
-        /* Particles.js configuration */
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 700
-                    }
-                },
-                "color": {
-                    "value": "#ffd700"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    },
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffd700",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        // Particle class
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+
+            // Draw individual particle
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            // Update particle position
+            update() {
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+
+                this.draw();
+            }
+        }
+
+        let particlesArray;
+
+        // Initialize particles
+        function initParticles() {
+            particlesArray = [];
+            const numberOfParticles = (canvas.width * canvas.height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                const size = Math.random() * 2 + 1;
+                const x = Math.random() * (canvas.width - size * 2) + size * 2;
+                const y = Math.random() * (canvas.height - size * 2) + size * 2;
+                const directionX = (Math.random() * 0.4) - 0.2;
+                const directionY = (Math.random() * 0.4) - 0.2;
+                const color = '#ffd700';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        // Animate particles
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connectParticles();
+        }
+
+        // Connect particles with lines if close enough
+        function connectParticles() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    const distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(255, 215, 0, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
                     }
                 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 400,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 100,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
+            }
+        }
+
+        // Handle mouse interactions
+        const mouse = {
+            x: null,
+            y: null,
+            radius: (canvas.width / 80) * (canvas.height / 80)
+        };
+
+        window.addEventListener('mousemove', function (event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        window.addEventListener('mouseleave', function () {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        // Add particles on left click
+        window.addEventListener('click', function (event) {
+            if (event.button === 0) { // Left click
+                const size = Math.random() * 2 + 1;
+                const x = event.x;
+                const y = event.y;
+                const directionX = (Math.random() * 0.4) - 0.2;
+                const directionY = (Math.random() * 0.4) - 0.2;
+                const color = '#ff6f61';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        });
+
+        // Remove particles on right click
+        window.addEventListener('contextmenu', function (event) {
+            event.preventDefault(); // Prevent context menu
+            const clickX = event.x;
+            const clickY = event.y;
+            particlesArray = particlesArray.filter(particle => {
+                const distance = Math.hypot(particle.x - clickX, particle.y - clickY);
+                return distance > 50; // Remove particles within 50px of click
+            });
+        });
+
+        // Particle interactivity
+        function handleMouseInteraction() {
+            for (let i = 0; i < particlesArray.length; i++) {
+                const distance = Math.hypot(particlesArray[i].x - mouse.x, particlesArray[i].y - mouse.y);
+                if (distance < mouse.radius && mouse.x && mouse.y) {
+                    if (particlesArray[i].x < mouse.x && particlesArray[i].y < mouse.y) {
+                        particlesArray[i].x -= 3;
+                        particlesArray[i].y -= 3;
+                    }
+                    if (particlesArray[i].x > mouse.x && particlesArray[i].y < mouse.y) {
+                        particlesArray[i].x += 3;
+                        particlesArray[i].y -= 3;
+                    }
+                    if (particlesArray[i].x < mouse.x && particlesArray[i].y > mouse.y) {
+                        particlesArray[i].x -= 3;
+                        particlesArray[i].y += 3;
+                    }
+                    if (particlesArray[i].x > mouse.x && particlesArray[i].y > mouse.y) {
+                        particlesArray[i].x += 3;
+                        particlesArray[i].y += 3;
                     }
                 }
-            },
-            "retina_detect": true
-        });
-    </script>
+            }
+        }
 
-    <!-- Additional Script for Enhancements (Optional) -->
-    <script>
-        // Example: Change header color on scroll
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
+        // Update animation loop to include mouse interactions
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => particle.update());
+            connectParticles();
+            handleMouseInteraction();
+        }
+
+        // Initialize and start animation
+        initParticles();
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            mouse.radius = (canvas.width / 80) * (canvas.height / 80);
+            initParticles();
         });
     </script>
 </body>
