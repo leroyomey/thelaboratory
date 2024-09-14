@@ -125,6 +125,10 @@
             transform: translateX(-50%);
             font-size: 1em;
             color: #1db954; /* Updated Footer Color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
         footer a {
@@ -136,6 +140,24 @@
 
         footer a:hover {
             color: #17a44c; /* Updated Footer Link Hover Color */
+        }
+
+        /* Donate Button Styling */
+        .donate-button {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff5722; /* Choose a distinct color for the donate button */
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .donate-button:hover {
+            background-color: #e64a19; /* Darker shade on hover */
+            transform: scale(1.05);
         }
 
         /* Responsive Design */
@@ -214,6 +236,13 @@
         <p>
             <a href="https://x.com/randompers91506" target="_blank" aria-label="Visit Omey's X Profile">Omey</a> &copy; 2024
         </p>
+        <!-- PayPal Donate Button -->
+        <a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD" 
+           target="_blank" 
+           aria-label="Donate via PayPal" 
+           class="donate-button">
+            Donate
+        </a>
     </footer>
 </body>
 </html>
