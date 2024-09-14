@@ -4,24 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Laboratory - Projects and Tools by Omey">
+    <meta description="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Rubik+Glitch&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    
+
+    <!-- Google Fonts: Updated Main Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
     <!-- AOS Library for Scroll Animations -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrQkTyP4A5V1YUcHlxVJaf5tuDN0X1dGiF+VdTEJ1wAeXh6xKjx/BzIGz3I5gNq+8IzHT4+rXfuh9TfzJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Three.js Library for Advanced Background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- AOS Library Script -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrQkTyP4A5V1YUcHlxVJaf5tuDN0X1dGiF+VdTEJ1wAeXh6xKjx/BzIGz3I5gNq+8IzHT4+rXfuh9TfzJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         /* =======================
            GENERAL STYLES
@@ -32,13 +32,15 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f2027;
+            font-family: 'Roboto', sans-serif; /* Updated Main Font */
+            background: #0f2027;
             color: #ffffff;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            position: relative;
         }
 
         a {
@@ -52,292 +54,95 @@
         }
 
         /* =======================
-           NAVIGATION BAR
+           PARTICLES BACKGROUND
         ======================= */
-        nav {
+        #particles-js {
             position: fixed;
             width: 100%;
-            background: rgba(15, 32, 39, 0.9);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            transition: background 0.3s;
-        }
-
-        nav.scrolled {
-            background: rgba(15, 32, 39, 1);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-family: 'Rubik Glitch', sans-serif;
-            font-size: 30px;
-            color: #ffd700;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links li a {
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .nav-links li a:hover {
-            background: #ffd700;
-            color: #0f2027;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
         }
 
         /* =======================
-           HERO SECTION
+           HEADER
         ======================= */
-        .hero {
-            height: 100vh;
+        header {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background: rgba(15, 32, 39, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 50px;
+            color: #ffd700;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* =======================
+           MAIN CONTENT
+        ======================= */
+        .container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            padding: 100px 20px;
+            min-height: 100vh;
         }
 
-        .hero h1 {
-            font-family: 'Rubik Glitch', sans-serif;
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: glitch 2s infinite;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .hero .cta-button {
-            padding: 15px 30px;
-            background-color: #28a745;
-            color: #ffffff;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            text-decoration: none;
-        }
-
-        .hero .cta-button:hover {
-            background-color: #218838;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Glitch Animation */
-        @keyframes glitch {
-            0% {
-                text-shadow: 2px 2px #ff6f61;
-            }
-            20% {
-                text-shadow: -2px -2px #28a745;
-            }
-            40% {
-                text-shadow: 2px -2px #ffd700;
-            }
-            60% {
-                text-shadow: -2px 2px #ff6f61;
-            }
-            80% {
-                text-shadow: 2px 2px #28a745;
-            }
-            100% {
-                text-shadow: -2px -2px #ffd700;
-            }
-        }
-
-        /* =======================
-           PROJECTS SECTION
-        ======================= */
-        .projects-section {
-            padding: 100px 30px;
-            background: #16222A;
-        }
-
-        .projects-section h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: #ffd700;
-        }
-
-        .projects-container {
+        .projects {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             gap: 30px;
-        }
-
-        .project-card {
-            background: rgba(255, 215, 0, 0.1);
-            border: 2px solid #ffd700;
+            max-width: 80%;
+            width: 100%;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
             border-radius: 15px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s, background 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 111, 97, 0.1);
-            border-color: #ff6f61;
-        }
-
-        .project-card h3 {
-            margin-bottom: 15px;
-            color: #ffd700;
-        }
-
-        .project-card p {
-            font-size: 1em;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .project-card a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #ff6f61;
-            color: #ffffff;
-            border-radius: 25px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .project-card a:hover {
-            background-color: #e65c54;
-            transform: scale(1.05);
-        }
-
-        /* =======================
-           ABOUT SECTION
-        ======================= */
-        .about-section {
-            padding: 100px 30px;
-            background: #203a43;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .about-section h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            color: #ffd700;
-        }
-
-        .about-section p {
-            max-width: 800px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .about-section .skills {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .skill-tag {
-            background: #ff6f61;
-            color: #ffffff;
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .skill-tag:hover {
-            background: #e65c54;
-        }
-
-        /* =======================
-           CONTACT SECTION
-        ======================= */
-        .contact-section {
-            padding: 100px 30px;
-            background: #16222A;
-            text-align: center;
-        }
-
-        .contact-section h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            color: #ffd700;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1em;
-            resize: none;
-        }
-
-        .contact-form button {
-            padding: 15px;
-            background-color: #28a745;
-            color: #ffffff;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .contact-form button:hover {
-            background-color: #218838;
-            transform: translateY(-3px);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .projects a {
+            text-decoration: none;
+            font-size: 1.8em;
+            color: #ffd700;
+            transition: color 0.3s, transform 0.3s;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .projects a:hover {
+            color: #ff6f61;
+            transform: scale(1.05);
+            background: rgba(255, 111, 97, 0.1);
         }
 
         /* =======================
            FOOTER
         ======================= */
         footer {
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
             text-align: center;
+            padding: 20px 0;
+            background-color: rgba(15, 32, 39, 0.9);
             position: relative;
+            z-index: 100;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
         }
 
         footer p {
-            margin-bottom: 10px;
             font-size: 0.9em;
             color: #ffffff;
         }
@@ -379,37 +184,67 @@
         }
 
         /* =======================
-           THREE.JS BACKGROUND
+           PARALLAX BACKGROUND
         ======================= */
-        #bgCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .parallax {
+            /* The image used */
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');
+
+            /* Set a specific height */
+            min-height: 400px;
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: brightness(0.7);
+            position: relative;
             z-index: -2;
         }
 
         /* =======================
            RESPONSIVE DESIGN
         ======================= */
-        @media (max-width: 768px) {
-            .hero h1 {
+        @media (max-width: 900px) {
+            header h1 {
                 font-size: 40px;
             }
 
-            .nav-links {
-                display: none;
+            .projects a {
+                font-size: 1.5em;
             }
 
-            /* Hamburger Menu Styles (Optional for Future Enhancement) */
+            .donate-button {
+                padding: 12px 18px;
+                font-size: 14px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 35px;
+            }
+
+            .projects a {
+                font-size: 1.2em;
+            }
+
+            .donate-button {
+                padding: 10px 16px;
+                font-size: 12px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
 
         /* =======================
            SCROLLBAR STYLES
         ======================= */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
@@ -418,7 +253,7 @@
 
         ::-webkit-scrollbar-thumb {
             background: #ffd700;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -428,190 +263,164 @@
 </head>
 
 <body>
-    <!-- =======================
-           THREE.JS BACKGROUND
-    ======================= -->
-    <canvas id="bgCanvas"></canvas>
+    <!-- Parallax Background -->
+    <div class="parallax"></div>
 
-    <!-- =======================
-           NAVIGATION BAR
-    ======================= -->
-    <nav id="navbar">
-        <div class="logo">The Lab</div>
-        <ul class="nav-links">
-            <li><a href="#home" target="_blank" rel="noopener noreferrer">Home</a></li>
-            <li><a href="#projects" target="_blank" rel="noopener noreferrer">Projects</a></li>
-            <li><a href="#about" target="_blank" rel="noopener noreferrer">About</a></li>
-            <li><a href="#contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
 
-    <!-- =======================
-           HERO SECTION
-    ======================= -->
-    <section class="hero" id="home" data-aos="fade-up">
+    <!-- Header -->
+    <header>
         <h1>The Laboratory</h1>
-        <p>Welcome to The Laboratory - your hub for innovative projects and cutting-edge tools designed to empower and inspire.</p>
-        <a href="#projects" class="cta-button" target="_blank" rel="noopener noreferrer">Explore Projects</a>
-    </section>
+    </header>
 
-    <!-- =======================
-           PROJECTS SECTION
-    ======================= -->
-    <section class="projects-section" id="projects" data-aos="fade-up">
-        <h2>Our Projects</h2>
-        <div class="projects-container">
-            <div class="project-card" data-aos="zoom-in">
-                <h3>Font Detector</h3>
-                <p>Detects and identifies fonts used on any webpage with ease.</p>
-                <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer">Visit</a>
-            </div>
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-                <h3>ReadEasy</h3>
-                <p>Enables dyslexia-friendly fonts to enhance readability for everyone.</p>
-                <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer">Visit</a>
-            </div>
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-                <h3>ReadLater</h3>
-                <p>Save webpages for later reading, ensuring you never miss important content.</p>
-                <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer">Visit</a>
-            </div>
-            <!-- Add more project cards as needed -->
+    <!-- Main Content Container -->
+    <div class="container" data-aos="fade-up">
+        <div class="projects">
+            <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer"
+                aria-label="Font Detector Tool">Font Detector - Detects Fonts on Webpages</a>
+            <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer"
+                aria-label="ReadEasy Tool">ReadEasy - Enable Dyslexia-Friendly Fonts</a>
+            <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer"
+                aria-label="ReadLater Tool">ReadLater - Save Webpages for Later</a>
         </div>
-    </section>
+    </div>
 
-    <!-- =======================
-           ABOUT SECTION
-    ======================= -->
-    <section class="about-section" id="about" data-aos="fade-up">
-        <h2>About Us</h2>
-        <p>At The Laboratory, we are passionate about creating tools and projects that make the digital world more accessible, efficient, and enjoyable. Our team of dedicated developers and designers work tirelessly to bring innovative solutions to life.</p>
-        <div class="skills">
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">HTML5</span>
-            <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Three.js</span>
-            <!-- Add more skills as needed -->
-        </div>
-    </section>
-
-    <!-- =======================
-           CONTACT SECTION
-    ======================= -->
-    <section class="contact-section" id="contact" data-aos="fade-up">
-        <h2>Contact Us</h2>
-        <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST" target="_blank" rel="noopener noreferrer">
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="_replyto" placeholder="Your Email" required />
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <!-- =======================
-           FOOTER
-    ======================= -->
-    <footer>
-        <p>&copy; 2024 <a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer">Omey</a>. All Rights Reserved.</p>
-        <div>
-            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-            <!-- Add more social icons as needed -->
-        </div>
-    </footer>
-
-    <!-- =======================
-           DONATE BUTTON
-    ======================= -->
+    <!-- Donate Button -->
     <a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="donate-button"
-        aria-label="Donate to support Omey via PayPal">
+        target="_blank" rel="noopener noreferrer" class="donate-button" aria-label="Donate to support Omey via PayPal">
         <i class="fas fa-donate"></i> Donate
     </a>
 
-    <!-- =======================
-           SCRIPTS
-    ======================= -->
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 <a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer">Omey</a>. All Rights Reserved.</p>
+    </footer>
+
+    <!-- AOS Initialization -->
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true,
         });
+    </script>
 
-        // Navigation Bar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+    <!-- Particles.js Configuration -->
+    <script>
+        /* Particles.js configuration */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 700
+                    }
+                },
+                "color": {
+                    "value": "#ffd700"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffd700",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
         });
+    </script>
 
-        // THREE.JS Background Setup
-        const canvas = document.getElementById('bgCanvas');
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-
-        const scene = new THREE.Scene();
-
-        const camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000
-        );
-        camera.position.z = 5;
-
-        // Particle Geometry
-        const geometry = new THREE.BufferGeometry();
-        const particles = 5000;
-        const positions = new Float32Array(particles * 3);
-
-        for (let i = 0; i < particles; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 50;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
-        }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-        // Particle Material
-        const material = new THREE.PointsMaterial({
-            color: 0xffd700,
-            size: 0.05,
-            transparent: true,
-            opacity: 0.7,
-        });
-
-        // Points
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
-
-        // Animation Loop
-        function animate() {
-            requestAnimationFrame(animate);
-            points.rotation.x += 0.0005;
-            points.rotation.y += 0.001;
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Responsive Handling
-        window.addEventListener('resize', () => {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
+    <!-- Additional Script for Enhancements (Optional) -->
+    <script>
+        // Example: Change header color on scroll
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
     </script>
 </body>
