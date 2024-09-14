@@ -7,7 +7,7 @@
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
     <!-- Updated fonts for the content -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Rubik+Glitch&display=swap" rel="stylesheet">
     <style>
         /* General Reset and Box-Sizing */
         * {
@@ -28,6 +28,19 @@
             display: flex;
             flex-direction: column;
             scroll-behavior: smooth;
+        }
+
+        /* Header Styling */
+        header {
+            font-family: 'Rubik Glitch', sans-serif;
+            font-size: 50px;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-in-out;
         }
 
         /* Center the content container */
@@ -147,10 +160,24 @@
                 bottom: 80px; /* Maintain 80px from bottom */
             }
         }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Added Header Section -->
+    <header>
+        The Laboratory
+    </header>
 
     <div class="container">
         <div class="projects">
