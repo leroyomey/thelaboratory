@@ -55,6 +55,7 @@
             font-family: 'Lobster', cursive;
             letter-spacing: 3px;
             color: #ffd700; /* Use the yellow color */
+            margin-top: 20px;
             animation: textFadeIn 2s ease;
             animation: glitch 2s infinite;
         }
@@ -174,10 +175,11 @@
         footer a {
             color: #ffd700;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         footer a:hover {
-            color: #ffffff;
+            color: #ff6f61; /* Matching hover color */
         }
 
         @keyframes fadeIn {
@@ -216,8 +218,9 @@
 
 <body>
 
+    <h1>The Laboratory</h1>
+
     <div class="container">
-        <h1>The Laboratory</h1>
         <div class="projects">
             <a href="https://fontdetector.xyz/index.html" aria-label="Font Detector Tool">Font Detector - Detects Fonts on Webpages</a>
             <a href="https://leroyomey.github.io/readeasy/" aria-label="ReadEasy Tool">ReadEasy - Enable Dyslexia-Friendly Fonts</a>
