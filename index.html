@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
-    <!-- Elegant fonts and ghost effect -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Updated fonts for the content -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,26 +24,7 @@
             color: #333;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Ghost Lettering for the Header */
-        h1 {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 15vw; /* Make it huge to span the page */
-            font-family: 'Playfair Display', serif;
-            color: transparent; /* Ghost lettering with transparent color */
-            -webkit-text-stroke: 2px #ffd700; /* Create the outline effect */
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
-            width: 100%;
-            height: 100vh; /* Full height to span the page */
-            z-index: 10;
-            text-align: center;
+            scroll-behavior: smooth;
         }
 
         /* Center the content container */
@@ -113,20 +94,12 @@
         }
 
         @media (max-width: 900px) {
-            h1 {
-                font-size: 12vw; /* Adjust size for smaller screens */
-            }
-
             .projects a {
                 font-size: 1.5em;
             }
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 10vw; /* Adjust size for mobile */
-            }
-
             .projects a {
                 font-size: 1.2em;
             }
@@ -135,9 +108,6 @@
 </head>
 
 <body>
-
-    <!-- Ghost Lettering Header -->
-    <h1>The Laboratory</h1>
 
     <div class="container">
         <div class="projects">
