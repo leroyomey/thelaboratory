@@ -9,8 +9,26 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papLe3hFjnSWAbjuTgYfYcB7xOeH7g5UYZJJYwvZ1n4m6hKMHwgF58R4mwDQaGZ+u6y/9i3qHXtZ9sv9B3i3Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Stylesheet -->
     <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #ffd700;
+            --secondary-color: #ff6f61;
+            --background-color: #0f2027;
+            --card-background: rgba(255, 255, 255, 0.1);
+            --card-hover-background: rgba(255, 111, 97, 0.1);
+            --text-color: #ffffff;
+            --header-bg: rgba(15, 32, 39, 0.8);
+            --footer-bg: rgba(15, 32, 39, 0.9);
+            --link-color: #ffd700;
+            --link-hover-color: #ff6f61;
+            --border-color: #ffd700;
+        }
+
         /* Reset */
         * {
             margin: 0;
@@ -21,13 +39,14 @@
         /* Body and Canvas */
         body {
             font-family: 'Roboto', sans-serif;
-            background: #0f2027;
-            overflow: hidden;
-            color: #ffffff;
+            background: var(--background-color);
+            overflow-x: hidden;
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
         canvas {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
@@ -42,15 +61,22 @@
             width: 100%;
             padding: 20px;
             text-align: center;
-            background: rgba(15, 32, 39, 0.8);
+            background: var(--header-bg);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             z-index: 100;
         }
 
         header h1 {
-            color: #ffd700;
-            font-size: 36px;
+            color: var(--primary-color);
+            font-size: 2.25rem;
             text-transform: uppercase;
+        }
+
+        /* Main Content */
+        main {
+            padding: 100px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Project Listing */
@@ -58,120 +84,177 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            max-width: 1200px;
-            margin: 100px auto 0;
             padding: 20px;
-            z-index: 100;
             position: relative;
+            z-index: 10;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #ffd700;
+            background: var(--card-background);
+            border: 2px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
-            color: #ffd700;
+            color: var(--primary-color);
             cursor: pointer;
             transition: all 0.3s ease-in-out;
+            backdrop-filter: blur(10px);
         }
 
         .project-card:hover {
-            background: rgba(255, 111, 97, 0.1);
-            border-color: #ff6f61;
+            background: var(--card-hover-background);
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .project-card h3 {
             margin-bottom: 15px;
+            font-size: 1.25rem;
         }
 
         .project-card p {
-            font-size: 16px;
-            color: #ffffff;
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
         }
 
         .project-card a {
             display: inline-block;
-            margin-top: 10px;
             padding: 10px 20px;
-            background-color: #ff6f61;
+            background-color: var(--secondary-color);
             color: #ffffff;
             border-radius: 25px;
+            text-decoration: none;
             transition: background-color 0.3s;
+            font-weight: bold;
         }
 
         .project-card a:hover {
-            background-color: #e65c54;
+            background-color: darken(var(--secondary-color), 10%);
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 20px;
-            background: rgba(15, 32, 39, 0.9);
-            color: #ffd700;
+            background: var(--footer-bg);
+            color: var(--primary-color);
             position: relative;
             z-index: 100;
         }
 
+        footer p {
+            margin-bottom: 10px;
+        }
+
         footer a {
-            color: #ffd700;
+            color: var(--link-color);
             text-decoration: none;
             margin: 0 10px;
+            font-size: 1.25rem;
+            transition: color 0.3s;
         }
 
         footer a:hover {
-            color: #ff6f61;
+            color: var(--link-hover-color);
+        }
+
+        /* FPS Monitor */
+        #fps {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #00ff00;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            z-index: 200;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 28px;
-            }
-
-            .project-card {
-                padding: 15px;
+                font-size: 1.75rem;
             }
 
             .project-card h3 {
-                font-size: 18px;
+                font-size: 1.125rem;
             }
+
+            .project-card p {
+                font-size: 0.95rem;
+            }
+
+            footer a {
+                font-size: 1rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Social Media Icons */
+        .social-icons a {
+            color: var(--link-color);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--link-hover-color);
+            transform: scale(1.2);
         }
     </style>
 </head>
 
 <body>
-    <canvas id="gameCanvas"></canvas>
+    <canvas id="gameCanvas" aria-hidden="true"></canvas>
+
+    <!-- FPS Monitor -->
+    <div id="fps" aria-label="Frames Per Second">FPS: 0</div>
 
     <!-- Header Section -->
     <header>
         <h1>The Interactive Laboratory</h1>
     </header>
 
-    <!-- Project List -->
-    <div class="projects">
-        <div class="project-card">
-            <h3>Font Detector</h3>
-            <p>Detect fonts used on any webpage with this simple tool.</p>
-            <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer">Visit</a>
-        </div>
-        <div class="project-card">
-            <h3>ReadEasy</h3>
-            <p>Enables dyslexia-friendly fonts for better readability.</p>
-            <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer">Visit</a>
-        </div>
-        <div class="project-card">
-            <h3>ReadLater</h3>
-            <p>Save webpages for later reading and never miss important content.</p>
-            <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer">Visit</a>
-        </div>
-        <!-- Add more projects as needed -->
-    </div>
+    <!-- Main Content -->
+    <main>
+        <!-- Project List -->
+        <section class="projects" aria-label="Project List">
+            <div class="project-card" tabindex="0">
+                <h3>Font Detector</h3>
+                <p>Detect fonts used on any webpage with this simple tool.</p>
+                <a href="https://fontdetector.xyz/index.html" target="_blank" rel="noopener noreferrer">Visit</a>
+            </div>
+            <div class="project-card" tabindex="0">
+                <h3>ReadEasy</h3>
+                <p>Enables dyslexia-friendly fonts for better readability.</p>
+                <a href="https://leroyomey.github.io/readeasy/" target="_blank" rel="noopener noreferrer">Visit</a>
+            </div>
+            <div class="project-card" tabindex="0">
+                <h3>ReadLater</h3>
+                <p>Save webpages for later reading and never miss important content.</p>
+                <a href="https://leroyomey.github.io/readlater/" target="_blank" rel="noopener noreferrer">Visit</a>
+            </div>
+            <!-- Add more projects as needed -->
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 <a href="https://x.com/randompers91506" target="_blank" rel="noopener noreferrer">Omey</a>. All Rights Reserved.</p>
+        <div class="social-icons" aria-label="Social Media Links">
+            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <!-- Add more social icons as needed -->
+        </div>
     </footer>
 
     <!-- JavaScript for Interactive Game Background -->
@@ -180,15 +263,39 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Set canvas to full screen
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // FPS Monitor
+        const fpsCounter = document.getElementById('fps');
+        let lastFrameTime = performance.now();
+        let fps = 0;
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
+        // Set canvas to full screen
+        function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        });
+            mouse.radius = (canvas.height / 100) * (canvas.width / 100);
+            initParticles();
+        }
+
+        // Debounce function to limit how often a function can run
+        function debounce(func, wait = 20, immediate = true) {
+            let timeout;
+            return function () {
+                const context = this, args = arguments;
+                const later = function () {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                const callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        }
+
+        window.addEventListener('resize', debounce(resizeCanvas));
+
+        // Initialize canvas size
+        resizeCanvas();
 
         // Mouse object
         const mouse = {
@@ -198,20 +305,20 @@
         };
 
         window.addEventListener('mousemove', (event) => {
-            mouse.x = event.x;
-            mouse.y = event.y;
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
         });
 
         // Particle class
         class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
+            constructor(x, y, directionX, directionY, size, color, isFriendly) {
                 this.x = x;
                 this.y = y;
                 this.directionX = directionX;
                 this.directionY = directionY;
                 this.size = size;
                 this.color = color;
-                this.isFriendly = Math.random() < 0.5; // 50% chance to be friendly or enemy
+                this.isFriendly = isFriendly;
             }
 
             // Draw particle
@@ -238,18 +345,14 @@
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
                 if (distance < mouse.radius + this.size) {
-                    // Move particles away from the mouse
-                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                        this.x += 10;
-                    }
-                    if (mouse.x > this.x && this.x > this.size * 10) {
-                        this.x -= 10;
-                    }
-                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                        this.y += 10;
-                    }
-                    if (mouse.y > this.y && this.y > this.size * 10) {
-                        this.y -= 10;
+                    if (this.isFriendly) {
+                        // Friendly particles are attracted to the mouse
+                        this.x -= dx / distance * 3;
+                        this.y -= dy / distance * 3;
+                    } else {
+                        // Enemy particles repel from the mouse
+                        this.x += dx / distance * 3;
+                        this.y += dy / distance * 3;
                     }
                 }
 
@@ -264,27 +367,59 @@
 
         // Initialize particle array
         let particlesArray = [];
+        const MAX_PARTICLES = 1000;
 
         function initParticles() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 8000;
+            const numberOfParticles = Math.min((canvas.width * canvas.height) / 8000, MAX_PARTICLES);
             for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 5 + 1;
+                const size = Math.random() * 3 + 1;
                 const x = Math.random() * (innerWidth - size * 2) + size * 2;
                 const y = Math.random() * (innerHeight - size * 2) + size * 2;
                 const directionX = (Math.random() * 0.5) - 0.25;
                 const directionY = (Math.random() * 0.5) - 0.25;
-                const color = Math.random() < 0.5 ? '#ffd700' : '#ff6f61'; // Friendly or enemy
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                const color = Math.random() < 0.5 ? 'var(--primary-color)' : 'var(--secondary-color)';
+                const isFriendly = color === 'var(--primary-color)';
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color, isFriendly));
             }
         }
 
         // Animate particles
         function animateParticles() {
             requestAnimationFrame(animateParticles);
+
+            // FPS Calculation
+            const now = performance.now();
+            const delta = now - lastFrameTime;
+            fps = Math.round(1000 / delta);
+            fpsCounter.textContent = `FPS: ${fps}`;
+            lastFrameTime = now;
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
+            }
+            connectParticles();
+        }
+
+        // Particle Linking
+        function connectParticles() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    const dx = particlesArray[a].x - particlesArray[b].x;
+                    const dy = particlesArray[a].y - particlesArray[b].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 150) {
+                        opacityValue = 1 - distance / 150;
+                        ctx.strokeStyle = `rgba(255, 215, 0, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
             }
         }
 
@@ -295,12 +430,15 @@
         // Handle mouse click: Add new particles
         window.addEventListener('click', (event) => {
             const size = Math.random() * 5 + 1;
-            const x = event.x;
-            const y = event.y;
+            const x = event.clientX;
+            const y = event.clientY;
             const directionX = (Math.random() * 0.5) - 0.25;
             const directionY = (Math.random() * 0.5) - 0.25;
             const color = '#00ff00'; // Green for user-added particles
-            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            const isFriendly = true;
+            if (particlesArray.length < MAX_PARTICLES) {
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color, isFriendly));
+            }
         });
 
         // Handle right-click to remove particles
@@ -308,8 +446,21 @@
             event.preventDefault(); // Prevent context menu
             const removeRadius = 50;
             particlesArray = particlesArray.filter(particle => {
-                const distance = Math.hypot(particle.x - event.x, particle.y - event.y);
-                return distance > removeRadius; // Remove particles within 50px of right-click
+                const distance = Math.hypot(particle.x - event.clientX, particle.y - event.clientY);
+                return distance > removeRadius;
+            });
+        });
+
+        // Accessibility: Allow project cards to be focused and activated via keyboard
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const link = card.querySelector('a');
+                    if (link) {
+                        link.click();
+                    }
+                }
             });
         });
     </script>
