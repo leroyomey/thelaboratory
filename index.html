@@ -23,7 +23,7 @@
             flex-direction: column;
             height: 100vh;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 10%, #fad0c4 100%);
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #333;
@@ -48,13 +48,96 @@
             animation: fadeIn 1.5s ease-in-out;
         }
 
+        /* Glitch header style */
         h1 {
-            margin-bottom: 40px;
+            position: relative;
             font-size: 3.5em;
             font-family: 'Lobster', cursive;
-            color: #ffffff;
             letter-spacing: 3px;
+            color: #ffd700; /* Use the yellow color */
             animation: textFadeIn 2s ease;
+            animation: glitch 2s infinite;
+        }
+
+        /* Create glitch effect */
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, -2px);
+            }
+
+            40% {
+                transform: translate(2px, 2px);
+            }
+
+            60% {
+                transform: translate(-2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        /* Add glitch lines */
+        h1::before, h1::after {
+            content: 'The Laboratory';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+
+        h1::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitchBefore 2s infinite linear alternate-reverse;
+        }
+
+        h1::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitchAfter 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitchBefore {
+            0% {
+                clip: rect(42px, 550px, 56px, 0);
+            }
+
+            50% {
+                clip: rect(12px, 550px, 100px, 0);
+            }
+
+            100% {
+                clip: rect(42px, 550px, 56px, 0);
+            }
+        }
+
+        @keyframes glitchAfter {
+            0% {
+                clip: rect(85px, 550px, 140px, 0);
+            }
+
+            50% {
+                clip: rect(12px, 550px, 100px, 0);
+            }
+
+            100% {
+                clip: rect(85px, 550px, 140px, 0);
+            }
         }
 
         .projects {
@@ -81,7 +164,7 @@
         .card a {
             text-decoration: none;
             font-size: 1.5em;
-            color: #5b92e5;
+            color: #ffd700; /* Matching yellow color */
             transition: color 0.3s;
         }
 
