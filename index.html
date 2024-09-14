@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -29,83 +29,25 @@
 
         h1 {
             position: absolute;
-            top: 20px; /* Moves header to the top */
+            top: 20px; /* Keeps header at the top */
             width: 100%;
             text-align: center;
             font-size: 3.5em;
-            font-family: 'Lobster', cursive;
+            font-family: 'Playfair Display', serif; /* Professional font */
             letter-spacing: 3px;
             color: #ffd700;
-            animation: textFadeIn 2s ease-in-out, glitch 2s infinite;
+            animation: slideIn 1.5s ease-in-out; /* New sliding animation */
         }
 
-        @keyframes glitch {
+        /* New slide-in animation */
+        @keyframes slideIn {
             0% {
-                transform: translate(0);
-            }
-            20% {
-                transform: translate(-2px, -2px);
-            }
-            40% {
-                transform: translate(2px, 2px);
-            }
-            60% {
-                transform: translate(-2px, 2px);
-            }
-            80% {
-                transform: translate(2px, -2px);
+                opacity: 0;
+                transform: translateY(-50px); /* Slide from above */
             }
             100% {
-                transform: translate(0);
-            }
-        }
-
-        h1::before, h1::after {
-            content: 'The Laboratory';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0);
-            overflow: hidden;
-        }
-
-        h1::before {
-            left: 2px;
-            text-shadow: -2px 0 red;
-            clip: rect(24px, 550px, 90px, 0);
-            animation: glitchBefore 2s infinite linear alternate-reverse;
-        }
-
-        h1::after {
-            left: -2px;
-            text-shadow: -2px 0 blue;
-            clip: rect(85px, 550px, 140px, 0);
-            animation: glitchAfter 3s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitchBefore {
-            0% {
-                clip: rect(42px, 550px, 56px, 0);
-            }
-            50% {
-                clip: rect(12px, 550px, 100px, 0);
-            }
-            100% {
-                clip: rect(42px, 550px, 56px, 0);
-            }
-        }
-
-        @keyframes glitchAfter {
-            0% {
-                clip: rect(85px, 550px, 140px, 0);
-            }
-            50% {
-                clip: rect(12px, 550px, 100px, 0);
-            }
-            100% {
-                clip: rect(85px, 550px, 140px, 0);
+                opacity: 1;
+                transform: translateY(0); /* Slide to its position */
             }
         }
 
@@ -165,17 +107,6 @@
             }
             to {
                 opacity: 1;
-            }
-        }
-
-        @keyframes textFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
             }
         }
 
