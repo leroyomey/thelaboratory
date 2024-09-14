@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Laboratory - Projects and Tools by Omey">
     <title>The Laboratory</title>
     <style>
         body {
@@ -23,6 +25,7 @@
         h1 {
             margin-bottom: 20px;
             font-size: 3em;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         ul {
@@ -38,32 +41,70 @@
             text-decoration: none;
             font-size: 1.5em;
             color: #5b92e5;
+            transition: color 0.3s, transform 0.3s;
         }
 
         a:hover {
             color: #333;
+            transform: scale(1.05);
         }
 
         footer {
             text-align: center;
-            justify-content: footer;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        footer a {
+            color: #5b92e5;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            a {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <h1>The Laboratory</h1>
         <ul>
-            <li><a href="https://fontdetector.xyz/index.html">Font Detector</a></li>
-            <li>Project ReadEasy</li>
+            <li><a href="https://fontdetector.xyz/index.html" aria-label="Font Detector Tool">Font Detector</a></li>
+            <li aria-label="Project ReadEasy - Coming Soon">Project ReadEasy (Coming Soon)</li>
         </ul>
     </div>
 
     <footer>
-        <p>Omey © 2024 | The Creator <span class="creator"><a href="https://x.com/randompers91506"
-                    target="_blank" rel="noopener noreferrer">Omey</a></span></p>
+        <p>Omey © 2024 | The Creator <span class="creator"><a href="https://x.com/randompers91506" target="_blank"
+                    rel="noopener noreferrer" aria-label="Omey's Profile">Omey</a></span></p>
     </footer>
 
 </body>
+
 </html>
