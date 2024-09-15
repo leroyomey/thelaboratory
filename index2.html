@@ -12,43 +12,76 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
         }
 
         .container {
             display: flex;
             height: 100vh;
+            flex-wrap: wrap;
         }
 
         .left-section, .right-section {
-            padding: 20px;
+            padding: 40px;
+            transition: background-color 0.3s ease-in-out;
         }
 
         .left-section {
             width: 50%;
-            background-color: #e0e0e0;
+            background-color: #f2f2f2;
             border-right: 2px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: justify;
         }
 
         .right-section {
             width: 50%;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .media-section, .updates-section {
             flex: 1;
-            padding: 20px;
+            padding: 30px;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 8px;
+            margin: 10px;
         }
 
         .media-section {
-            background-color: #d1ecf1;
+            background-color: #e9f7ff;
         }
 
         .updates-section {
-            background-color: #d4edda;
+            background-color: #d8f3dc;
+        }
+
+        .media-section:hover, .updates-section:hover {
+            background-color: #e0f7fa;
+        }
+
+        @media (max-width: 768px) {
+            .left-section, .right-section {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -57,17 +90,26 @@
         <div class="left-section">
             <h2>Privacy Policy</h2>
             <p>
-                This is where your privacy policy will go. You can provide details about how user data is collected, processed, and stored. Be as transparent as possible to ensure user trust.
+                We take your privacy seriously. This policy outlines how we collect, use, and protect your personal information. Our goal is to ensure your data is handled in a secure and transparent manner, so you can browse with confidence.
+            </p>
+            <p>
+                Data Collection: We collect only the information necessary to provide you with the best experience, including name, email, and browsing preferences.
+            </p>
+            <p>
+                Data Usage: We use your data to improve our services, offer personalized experiences, and ensure the safety of your account.
+            </p>
+            <p>
+                For more detailed information, please visit our full privacy policy page.
             </p>
         </div>
         <div class="right-section">
             <div class="media-section">
                 <h2>Media</h2>
-                <p>Here you can display media content like images, videos, or other media files.</p>
+                <p>Explore our latest media releases, including promotional videos, infographics, and more. Stay up to date with what's happening!</p>
             </div>
             <div class="updates-section">
                 <h2>Updates</h2>
-                <p>Post recent updates about your product or service. This section can include news or important information.</p>
+                <p>Check out the latest updates on our product development, upcoming features, and exciting new collaborations. Stay tuned for more!</p>
             </div>
         </div>
     </div>
