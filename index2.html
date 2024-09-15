@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy, Media, and Updates</title>
+    <title>ReadLater Privacy Policy</title>
     <style>
         * {
             margin: 0;
@@ -12,106 +12,148 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
         }
 
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
         h2 {
-            font-size: 1.8rem;
-            color: #0056b3;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            color: #2980b9;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         p {
+            margin-bottom: 10px;
             font-size: 1rem;
-            margin-bottom: 20px;
         }
 
         .container {
-            display: flex;
-            height: 100vh;
-            flex-wrap: wrap;
-        }
-
-        .left-section, .right-section {
-            padding: 40px;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .left-section {
-            width: 50%;
-            background-color: #f2f2f2;
-            border-right: 2px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: justify;
-        }
-
-        .right-section {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .media-section, .updates-section {
-            flex: 1;
-            padding: 30px;
-            transition: background-color 0.3s ease-in-out;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
             border-radius: 8px;
-            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .media-section {
-            background-color: #e9f7ff;
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
         }
 
-        .updates-section {
-            background-color: #d8f3dc;
+        ul li {
+            margin-bottom: 10px;
         }
 
-        .media-section:hover, .updates-section:hover {
-            background-color: #e0f7fa;
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
         }
 
         @media (max-width: 768px) {
-            .left-section, .right-section {
-                width: 100%;
-                padding: 20px;
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .container {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="left-section">
-            <h2>Privacy Policy</h2>
-            <p>
-                We take your privacy seriously. This policy outlines how we collect, use, and protect your personal information. Our goal is to ensure your data is handled in a secure and transparent manner, so you can browse with confidence.
-            </p>
-            <p>
-                Data Collection: We collect only the information necessary to provide you with the best experience, including name, email, and browsing preferences.
-            </p>
-            <p>
-                Data Usage: We use your data to improve our services, offer personalized experiences, and ensure the safety of your account.
-            </p>
-            <p>
-                For more detailed information, please visit our full privacy policy page.
-            </p>
-        </div>
-        <div class="right-section">
-            <div class="media-section">
-                <h2>Media</h2>
-                <p>Explore our latest media releases, including promotional videos, infographics, and more. Stay up to date with what's happening!</p>
-            </div>
-            <div class="updates-section">
-                <h2>Updates</h2>
-                <p>Check out the latest updates on our product development, upcoming features, and exciting new collaborations. Stay tuned for more!</p>
-            </div>
-        </div>
+        <h1>Privacy Policy for ReadLater</h1>
+        <p><strong>Effective Date:</strong> [Insert Date]</p>
+        
+        <h2>1. Introduction</h2>
+        <p>Welcome to ReadLater! Your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your information when you use the ReadLater browser extension (the “Service”).</p>
+        <p>By using ReadLater, you agree to the terms outlined in this Privacy Policy.</p>
+
+        <h2>2. Information We Collect</h2>
+        <p><strong>2.1 Saved Articles</strong><br>
+            When you save an article using the ReadLater extension, the URL and title of the article are stored locally in your browser’s storage. We do not collect or have access to any saved articles, URLs, or any data related to your browsing history.
+        </p>
+        <p><strong>2.2 Chrome Storage Data</strong><br>
+            All saved articles (including URLs and titles) are stored using Chrome’s <em>chrome.storage.sync</em> feature, which enables the data to be synchronized across your devices that are signed into the same Chrome account.
+        </p>
+        <p><strong>2.3 Non-Personal Data</strong><br>
+            We may collect anonymous, non-personal data such as aggregate usage statistics to help us improve the extension. This data does not identify individual users and may include:
+        </p>
+        <ul>
+            <li>Extension usage metrics (e.g., feature usage frequency)</li>
+            <li>Anonymous crash reports</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <p><strong>3.1 Stored Data</strong><br>
+            The URLs, titles, and reordering of saved articles are solely stored locally and synchronized using Chrome's storage system. This data is not transmitted to any external servers and is only used to display and manage your saved articles within the ReadLater extension.
+        </p>
+        <p><strong>3.2 Functional Data</strong><br>
+            Any changes you make to saved articles (editing titles, reordering, or deleting items) will update the stored data in your browser. These changes are reflected locally and across other Chrome browsers where you are logged in.
+        </p>
+        <p><strong>3.3 Improving the Service</strong><br>
+            We may use anonymous data to:
+        </p>
+        <ul>
+            <li>Understand how users interact with the extension</li>
+            <li>Identify issues, bugs, or crashes to improve performance and functionality</li>
+            <li>Introduce new features or improve existing features</li>
+        </ul>
+
+        <h2>4. Sharing and Disclosure of Information</h2>
+        <p><strong>4.1 No Sharing of Personal Data</strong><br>
+            We do not share or sell any personal data, browsing history, or stored articles to third parties. Your saved articles are only accessible within the ReadLater extension and your Chrome storage.
+        </p>
+        <p><strong>4.2 Third-Party Services</strong><br>
+            ReadLater does not integrate with third-party services that require access to personal data or browsing history. We do not track your browsing activities or access other websites without your explicit action (e.g., saving an article).
+        </p>
+
+        <h2>5. Data Retention and Storage</h2>
+        <p><strong>5.1 Local Storage</strong><br>
+            All saved articles (URLs and titles) are stored in your browser’s local storage and synchronized using Chrome’s cloud storage system. The data remains available as long as the extension is installed, and Chrome sync is active.
+        </p>
+        <p><strong>5.2 Data Deletion</strong><br>
+            You can delete saved articles manually from within the ReadLater extension. You can also remove all saved data by uninstalling the extension, which will clear the extension's local storage from your browser.
+        </p>
+
+        <h2>6. Security of Your Information</h2>
+        <p>We take the security of your data seriously. However, no system is completely secure. While we strive to use industry-standard practices to protect your information, we cannot guarantee the absolute security of your data. We recommend using strong passwords and keeping your Chrome account secure.</p>
+
+        <h2>7. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or services. When we make changes, we will update the “Effective Date” at the top of this document. You are encouraged to review this Privacy Policy periodically to stay informed of how we handle your data.</p>
+
+        <h2>8. Your Consent</h2>
+        <p>By using the ReadLater extension, you consent to this Privacy Policy and agree to its terms. If you do not agree with any part of this Privacy Policy, you should stop using the extension and remove it from your browser.</p>
+
+        <h2>9. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy or the ReadLater extension, please contact us at:</p>
+        <ul>
+            <li><strong>Email:</strong> therealpagesaver@gmail.com</li>
+            <li><strong>Website:</strong> <a href="https://leroyomey.github.io/thelaboratory/">https://leroyomey.github.io/thelaboratory/</a></li>
+        </ul>
     </div>
+
+    <div class="footer">
+        ReadLater © 2024 | Created by Omey
+    </div>
+
 </body>
 </html>
