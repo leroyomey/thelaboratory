@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReadLater Privacy Policy, Media, and Updates</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -57,6 +58,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); /* Gradient background */
         }
 
         .left-section:hover, .right-section:hover {
@@ -66,7 +68,6 @@
 
         .left-section {
             width: 50%;
-            background-color: #edf2f7; /* Light background for contrast */
             padding: 40px;
         }
 
@@ -84,11 +85,22 @@
             border-radius: 8px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
         }
 
         .media-section:hover, .updates-section:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .media-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .updates-section {
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            color: #fff;
         }
 
         ul {
@@ -101,14 +113,15 @@
         }
 
         .footer {
+            position: sticky;
+            bottom: 0;
             text-align: center;
             font-size: 0.9rem;
-            color: #777;
+            color: #fff;
             padding: 10px;
-            background-color: #e2e8f0;
-            border-top: 1px solid #cbd5e0;
-            margin-top: 20px;
+            background-color: #2d3748;
             border-radius: 0 0 8px 8px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
         }
 
         a {
@@ -118,6 +131,10 @@
 
         a:hover {
             text-decoration: underline;
+        }
+
+        .icon {
+            margin-right: 10px;
         }
 
         @media (max-width: 768px) {
@@ -137,7 +154,7 @@
     <div class="container">
         <!-- Left Section for Privacy Policy -->
         <div class="left-section">
-            <h1>Privacy Policy for ReadLater</h1>
+            <h1><i class="fas fa-user-shield icon"></i> Privacy Policy for ReadLater</h1>
             <p><strong>Effective Date:</strong> [Insert Date]</p>
             
             <h2>1. Introduction</h2>
@@ -211,11 +228,11 @@
         <!-- Right Section for Media and Updates -->
         <div class="right-section">
             <div class="media-section">
-                <h2>Media</h2>
+                <h2><i class="fas fa-photo-video icon"></i> Media</h2>
                 <p>Explore our latest media releases, including promotional videos, infographics, and more. Stay up to date with what's happening!</p>
             </div>
             <div class="updates-section">
-                <h2>Updates</h2>
+                <h2><i class="fas fa-bullhorn icon"></i> Updates</h2>
                 <p>Check out the latest updates on our product development, upcoming features, and exciting new collaborations. Stay tuned for more!</p>
             </div>
         </div>
