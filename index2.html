@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagePocket Privacy Policy, Media, and Updates</title>
+    <title>ReadLater Privacy Policy, Media, and Updates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,47 +13,61 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
             color: #333;
+            line-height: 1.6;
             overflow: hidden; /* Prevent body scrolling */
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        h1, h2 {
+            margin-bottom: 15px;
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: center;
-            color: #2c3e50;
-            margin-bottom: 20px;
+            color: #2d3748;
         }
 
         h2 {
-            font-size: 1.6rem;
-            color: #2980b9;
+            font-size: 1.5rem;
+            color: #4a5568;
             margin-top: 20px;
-            margin-bottom: 10px;
         }
 
         p {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1rem;
+            color: #4a5568;
         }
 
         .container {
             display: flex;
             height: 100vh; /* Full viewport height */
+            gap: 20px; /* Space between sections */
         }
 
         .left-section, .right-section {
             padding: 20px;
             height: 100vh;
             overflow-y: auto; /* Enable scrolling for each half */
-            transition: background-color 0.3s ease-in-out;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .left-section:hover, .right-section:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
         }
 
         .left-section {
             width: 50%;
-            background-color: #f2f2f2;
-            border-right: 2px solid #ccc;
+            background-color: #edf2f7; /* Light background for contrast */
+            padding: 40px;
         }
 
         .right-section {
@@ -65,22 +80,15 @@
         .media-section, .updates-section {
             flex: 1;
             padding: 30px;
-            transition: background-color 0.3s ease-in-out;
+            background-color: #ffffff;
             border-radius: 8px;
-            margin: 10px;
-            overflow-y: auto;
-        }
-
-        .media-section {
-            background-color: #e9f7ff;
-        }
-
-        .updates-section {
-            background-color: #d8f3dc;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .media-section:hover, .updates-section:hover {
-            background-color: #e0f7fa;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         ul {
@@ -96,13 +104,30 @@
             text-align: center;
             font-size: 0.9rem;
             color: #777;
+            padding: 10px;
+            background-color: #e2e8f0;
+            border-top: 1px solid #cbd5e0;
             margin-top: 20px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        a {
+            color: #3182ce;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
             .left-section, .right-section {
                 width: 100%;
-                padding: 20px;
+                height: 50vh; /* Adjust height for mobile */
+            }
+
+            .container {
+                flex-direction: column;
             }
         }
     </style>
@@ -112,16 +137,16 @@
     <div class="container">
         <!-- Left Section for Privacy Policy -->
         <div class="left-section">
-            <h1>Privacy Policy for pagePocket</h1>
+            <h1>Privacy Policy for ReadLater</h1>
             <p><strong>Effective Date:</strong> [Insert Date]</p>
             
             <h2>1. Introduction</h2>
-            <p>Welcome to pagePocket! Your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your information when you use the pagePocket browser extension (the “Service”).</p>
-            <p>By using pagePocket, you agree to the terms outlined in this Privacy Policy.</p>
+            <p>Welcome to ReadLater! Your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your information when you use the ReadLater browser extension (the “Service”).</p>
+            <p>By using ReadLater, you agree to the terms outlined in this Privacy Policy.</p>
 
             <h2>2. Information We Collect</h2>
             <p><strong>2.1 Saved Articles</strong><br>
-                When you save an article using the pagePocket extension, the URL and title of the article are stored locally in your browser’s storage. We do not collect or have access to any saved articles, URLs, or any data related to your browsing history.
+                When you save an article using the ReadLater extension, the URL and title of the article are stored locally in your browser’s storage. We do not collect or have access to any saved articles, URLs, or any data related to your browsing history.
             </p>
             <p><strong>2.2 Chrome Storage Data</strong><br>
                 All saved articles (including URLs and titles) are stored using Chrome’s <em>chrome.storage.sync</em> feature, which enables the data to be synchronized across your devices that are signed into the same Chrome account.
@@ -136,7 +161,7 @@
 
             <h2>3. How We Use Your Information</h2>
             <p><strong>3.1 Stored Data</strong><br>
-                The URLs, titles, and reordering of saved articles are solely stored locally and synchronized using Chrome's storage system. This data is not transmitted to any external servers and is only used to display and manage your saved articles within the pagePocket extension.
+                The URLs, titles, and reordering of saved articles are solely stored locally and synchronized using Chrome's storage system. This data is not transmitted to any external servers and is only used to display and manage your saved articles within the ReadLater extension.
             </p>
             <p><strong>3.2 Functional Data</strong><br>
                 Any changes you make to saved articles (editing titles, reordering, or deleting items) will update the stored data in your browser. These changes are reflected locally and across other Chrome browsers where you are logged in.
@@ -152,10 +177,10 @@
 
             <h2>4. Sharing and Disclosure of Information</h2>
             <p><strong>4.1 No Sharing of Personal Data</strong><br>
-                We do not share or sell any personal data, browsing history, or stored articles to third parties. Your saved articles are only accessible within the pagePocket extension and your Chrome storage.
+                We do not share or sell any personal data, browsing history, or stored articles to third parties. Your saved articles are only accessible within the ReadLater extension and your Chrome storage.
             </p>
             <p><strong>4.2 Third-Party Services</strong><br>
-                pagePocket does not integrate with third-party services that require access to personal data or browsing history. We do not track your browsing activities or access other websites without your explicit action (e.g., saving an article).
+                ReadLater does not integrate with third-party services that require access to personal data or browsing history. We do not track your browsing activities or access other websites without your explicit action (e.g., saving an article).
             </p>
 
             <h2>5. Data Retention and Storage</h2>
@@ -163,7 +188,7 @@
                 All saved articles (URLs and titles) are stored in your browser’s local storage and synchronized using Chrome’s cloud storage system. The data remains available as long as the extension is installed, and Chrome sync is active.
             </p>
             <p><strong>5.2 Data Deletion</strong><br>
-                You can delete saved articles manually from within the pagePocket extension. You can also remove all saved data by uninstalling the extension, which will clear the extension's local storage from your browser.
+                You can delete saved articles manually from within the ReadLater extension. You can also remove all saved data by uninstalling the extension, which will clear the extension's local storage from your browser.
             </p>
 
             <h2>6. Security of Your Information</h2>
@@ -173,10 +198,10 @@
             <p>We may update this Privacy Policy from time to time to reflect changes in our practices or services. When we make changes, we will update the “Effective Date” at the top of this document. You are encouraged to review this Privacy Policy periodically to stay informed of how we handle your data.</p>
 
             <h2>8. Your Consent</h2>
-            <p>By using the pagePocket extension, you consent to this Privacy Policy and agree to its terms. If you do not agree with any part of this Privacy Policy, you should stop using the extension and remove it from your browser.</p>
+            <p>By using the ReadLater extension, you consent to this Privacy Policy and agree to its terms. If you do not agree with any part of this Privacy Policy, you should stop using the extension and remove it from your browser.</p>
 
             <h2>9. Contact Us</h2>
-            <p>If you have any questions or concerns about this Privacy Policy or the pagePocket extension, please contact us at:</p>
+            <p>If you have any questions or concerns about this Privacy Policy or the ReadLater extension, please contact us at:</p>
             <ul>
                 <li><strong>Email:</strong> therealpagesaver@gmail.com</li>
                 <li><strong>Website:</strong> <a href="https://leroyomey.github.io/thelaboratory/">https://leroyomey.github.io/thelaboratory/</a></li>
@@ -197,7 +222,7 @@
     </div>
 
     <div class="footer">
-        pagePocket © 2024 | Created by Omey
+        ReadLater © 2024 | Created by Omey
     </div>
 
 </body>
