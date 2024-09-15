@@ -36,29 +36,40 @@
             color: lightblue;
         }
 
-        .content {
+        .main-content {
             flex: 1;
-            padding: 20px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
         }
 
-        .content ul {
+        .divider {
+            display: flex;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .feature-list, .other-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .feature-list {
+            border-right: 2px solid #ccc;
+        }
+
+        .feature-list ul {
             list-style-type: none;
             padding: 0;
         }
 
-        .content ul li {
-            margin: 15px 0;
+        .feature-list ul li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #333;
         }
 
-        .content ul li a {
-            color: #3182ce;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .content ul li a:hover {
-            text-decoration: underline;
+        .other-content {
+            text-align: center;
         }
 
         footer {
@@ -67,6 +78,7 @@
             padding: 10px 0;
             text-align: center;
             font-size: 0.9rem;
+            margin-top: auto; /* Ensures footer stays at bottom */
         }
     </style>
 </head>
@@ -75,11 +87,28 @@
     <header>
         <h1><span style="color: grey;">page</span><span>Saver</span></h1>
     </header>
-    <div>1.
-    2.
-    3.
-    4.
-    5.</div>
+
+    <div class="main-content">
+        <div class="divider">
+            <!-- Left Side - Feature List -->
+            <div class="feature-list">
+                <h2>Features:</h2>
+                <ul>
+                    <li>Save web pages easily</li>
+                    <li>Organize saved pages</li>
+                    <li>Sync across devices</li>
+                    <li>Offline access</li>
+                    <li>Customizable categories</li>
+                </ul>
+            </div>
+
+            <!-- Right Side - Additional Content -->
+            <div class="other-content">
+                <h2>Additional Info</h2>
+                <p>Explore the various ways pageSaver helps you manage web content.</p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         © 2024 pageSaver | All Rights Reserved
