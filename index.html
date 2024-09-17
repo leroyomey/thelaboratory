@@ -27,14 +27,25 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #121212;
             color: #e0e0e0;
-            line-height: 1.6;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 0;
-            position: relative;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Hyperlink Styling */
+        a {
+            color: #1db954;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        a:hover {
+            color: #17a44c;
+            transform: scale(1.1);
         }
 
         .header {
@@ -45,73 +56,6 @@
             font-size: 2.5em;
             color: #1db954;
             text-decoration: none;
-        }
-
-        .projects {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            max-width: 1200px;
-        }
-
-        .project {
-            background-color: #1e1e1e;
-            border: 1px solid #333333;
-            border-radius: 12px;
-            padding: 25px;
-            width: 300px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.8);
-        }
-
-        .project-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
-            fill: #1db954;
-            transition: fill 0.3s;
-        }
-
-        .project:hover .project-icon {
-            fill: #17a44c;
-        }
-
-        .project h2 {
-            color: #1db954;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-
-        .project p {
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #1db954;
-            padding: 12px 20px;
-            border-radius: 6px;
-            text-align: center;
-            transition: background-color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-
-        .project a:hover {
-            background-color: #17a44c;
-            transform: scale(1.05);
         }
 
         footer {
@@ -146,117 +90,24 @@
             font-weight: bold;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .projects {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .project {
-                width: 250px; /* Increase the width slightly for mobile */
-                height: 100px; /* Decrease the height for mobile */
-            }
-
-            .header {
-                font-size: 1em;
-                top: 10px;
-                left: 10px;
-            }
-
-            footer {
-                font-size: 0.4em;
-                bottom: 10px;
-            }
-
-            .project h2 {
-                font-size: 0.6em;
-            }
-
-            .project p {
-                font-size: 0.5em;
-            }
-
-            .project a {
-                font-size: 0.4em;
-                padding: 10px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                font-size: 0.9em;
-            }
-
-            .project h2 {
-                font-size: 0.6em;
-            }
-
-            .project p {
-                font-size: 0.4em;
-            }
-
-            .project a {
-                font-size: 0.45em;
-                padding: 8px 12px;
-            }
-
-            .project-icon {
-                width: 10px;
-                height: 10px;
-            }
-
-            footer {
-                font-size: 0.8em;
-                gap: 8px;
-            }
-
-            .donate-button {
-                padding: 8px 16px;
-                font-size: 0.85em;
-            }
+        .donate-button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <a href="#" class="header" aria-label="The Lab">The Lab</a>
-    <section class="projects">
-        <div class="project">
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 3.38 2.44 6.16 5.67 6.81L12 22l1.33-6.19C16.56 15.16 19 12.38 19 9c0-3.87-3.13-7-7-7zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 
-                4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 
-                2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-            <h2>Font Detector</h2>
-            <p>Detects Fonts on Webpages. Easily identify the fonts used on any website.</p>
-            <a href="https://fontdetector.xyz" target="_blank" aria-label="View Font Detector Website">View Project</a>
-        </div>
-        <div class="project">
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 3H5c-1.1 0-2 .9-2 
-                2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
-            </svg>
-            <h2>readEasy</h2>
-            <p>Enable Dyslexia-Friendly Fonts. Improve readability and accessibility for dyslexic users and others.</p>
-            <a href="https://leroyomey.github.io/readeasy/" target="_blank" aria-label="View readEasy Website">View Project</a>
-        </div>
-        <div class="project">
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 21.35l-1.45-1.32C5.4 
-                15.36 2 12.28 2 8.5 2 5.42 
-                4.42 3 7.5 3c1.74 0 3.41 
-                0.81 4.5 2.09C13.09 3.81 14.76 
-                3 16.5 3 19.58 3 22 5.42 22 
-                8.5c0 3.78-3.4 6.86-8.55 
-                11.54L12 21.35z"/>
-            </svg>
-            <h2>pagePocket</h2>
-            <p>Bookmarking & Page Saving without the clutter!</p>
-            <a href="https://leroyomey.github.io/pagepocket/" target="_blank" aria-label="View pagePocket Website">View Project</a>
-        </div>
-    </section>
 
+    <!-- Hyperlinks for Projects -->
+    <a href="https://fontdetector.xyz" target="_blank" aria-label="Visit Font Detector">Font Detector</a>
+    <a href="https://leroyomey.github.io/readeasy/" target="_blank" aria-label="Visit Read Easy">Read Easy</a>
+    <a href="https://leroyomey.github.io/pagepocket/" target="_blank" aria-label="Visit Page Pocket">Page Pocket</a>
+
+    <!-- Footer -->
     <footer>
+        <!-- PayPal Donate Button -->
         <a href="https://www.paypal.com/donate/?business=M9WQ2UUMACTJ8&no_recurring=0&item_name=Thanks+for+your+support%21&currency_code=USD" 
            target="_blank" 
            aria-label="Donate via PayPal" 
