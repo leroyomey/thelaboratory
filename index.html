@@ -34,8 +34,8 @@
             flex-direction: column;
         }
 
-        /* Hyperlink Styling */
-        a {
+        /* Hyperlink Styling for Project List */
+        .project-link {
             color: #1db954;
             text-decoration: none;
             font-size: 1.5em;
@@ -43,7 +43,7 @@
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        a:hover {
+        .project-link:hover {
             transform: scale(1.05);
             color: #ff5722; /* Matches the donate button background color */
         }
@@ -75,17 +75,19 @@
             align-items: center;
         }
 
-        footer a {
+        /* Footer text links hover styling */
+        .footer-link {
             text-decoration: none;
             font-weight: bold;
             margin-right: -2px;
             transition: transform 0.3s ease;
         }
 
-        footer a:hover {
+        .footer-link:hover {
             transform: scale(1.05);
         }
 
+        /* Donate Button Styling */
         .donate-button {
             text-decoration: none;
             color: #fff;
@@ -108,9 +110,9 @@
     <div class="header" aria-label="The Lab">The Lab</div>
 
     <!-- Hyperlinks for Projects -->
-    <a href="https://fontdetector.xyz" target="_blank" aria-label="Visit Font Detector">Font Detector</a>
-    <a href="https://leroyomey.github.io/readeasy/" target="_blank" aria-label="Visit Read Easy">readEasy</a>
-    <a href="https://leroyomey.github.io/pagepocket/" target="_blank" aria-label="Visit Page Pocket">pagePocket</a>
+    <a href="https://fontdetector.xyz" target="_blank" aria-label="Visit Font Detector" class="project-link">Font Detector</a>
+    <a href="https://leroyomey.github.io/readeasy/" target="_blank" aria-label="Visit Read Easy" class="project-link">readEasy</a>
+    <a href="https://leroyomey.github.io/pagepocket/" target="_blank" aria-label="Visit Page Pocket" class="project-link">pagePocket</a>
 
     <!-- Footer -->
     <footer>
@@ -122,7 +124,7 @@
             Support My Work
         </a>
         <p>
-            <a href="https://x.com/randompers91506" target="_blank" aria-label="Visit Omey's X Profile">Omey</a> &copy; 2024
+            <a href="https://x.com/randompers91506" target="_blank" aria-label="Visit Omey's X Profile" class="footer-link">Omey</a> &copy; 2024
         </p>
     </footer>
 </body>
